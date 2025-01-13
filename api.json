@@ -1,0 +1,114 @@
+[
+  {
+    "id": "1",
+    "titulo": "One Piece",
+    "categorias": ["Acción", "Aventura", "Comedia","Superpoderes","Shounen"],
+    "imagenes": [
+      "poner foto",
+      "poner foto",
+      "poner foto",
+      "poner foto"
+    ],
+    "capitulos": 1122,
+    "emision": "20-10-1999",
+    "sinopsis": "Una historia épica de piratas, donde narra la historia de Monkey D. Luffy quien cuado tenia 7 años, comió accidentalmente una Akuma no mi(Futa del diablo) la cual le dio poderes de goma. Por otra parte Gol D. Roger conocido como El rey de los Piratas quien fuera ejecutado por la Marine, habló antes de morir, acerca de su famoso tesoro One Piece escondido en la Gran line."
+  },
+  {
+    "id": "2",
+    "titulo": "Your lie in april",
+    "categorias": ["Drama", "Romance", "Comedia","Shounen"],
+    "imagenes": [
+      "poner foto",
+      "poner foto",
+      "poner foto",
+      "poner foto"
+    ],
+    "capitulos": 23,
+    "emision": "10-10-2014",
+    "sinopsis": " Un prodigio del piano, Kousei Arima, pierde su conexión con la música tras una tragedia personal. Todo cambia cuando conoce a Kaori Miyazono, una violinista llena de energía que le enseña a redescubrir la pasión y el amor por la música."
+  },
+  {
+    "id": "3",
+    "titulo": "Blue lock",
+    "categorias": ["Deportes"],
+    "imagenes": [
+      "poner foto",
+      "poner foto",
+      "poner foto",
+      "poner foto"
+    ],
+    "capitulos": 38,
+    "emision": "9-10-2022",
+    "sinopsis": "Tras una desastrosa derrota en la Copa Mundial de 2018, el equipo japonés está pasando por un mal momento. ¿Qué es lo que les falta? Un delantero que sea el mejor, alguien que pueda guiarles hasta la victoria. La federación japonesa está decidida a crear un jugador con una sed de gol única, alguien egoísta con el balón, un jugador que pueda ser capaz de dar la vuelta a un partido que está por perderse..."
+  },
+  {
+    "id": "4",
+    "titulo": "Haikyuu!!",
+    "categorias": ["Deportes", "Drama", "Comedia","Shounen"],
+    "imagenes": [
+      "poner foto",
+      "poner foto",
+      "poner foto",
+      "poner foto"
+    ],
+    "capitulos": 26,
+    "emision": "06-04-2014",
+    "sinopsis": "Hinata Shouyou, al ver un partido de voleibol, pretende convertirse en El pequeño gigante, y se une a la escuela media de voleibol del club. Después de encontrar nuevos miembros, se establece para el torneo de la escuela secundaria, donde se cruzan con una escuela superior, con el Rey del juego superior, Kageyama Tobio ."
+  },
+  {
+    "id": "5",
+    "titulo": "Black Clover",
+    "categorias": ["Acción", "Aventura", "Fantasía", "Magia"],
+    "imagenes": [
+      "poner foto",
+      "poner foto",
+      "poner foto",
+      "poner foto"
+    ],
+    "capitulos": 170,
+    "emision": "03-10-2017",
+    "sinopsis": "La historia de Black Clover nos pone en la piel de un joven llamado Asta, el cual quiere convertirse en el mago más grande del reino. Sin embargo, hay un inconveniente: ¡no puede usar magia! Por suerte, Asta recibe el grimorio trébol de cinco hojas, que le otorga el poder de la anti-magia. "
+  },
+  {
+    "id": "6",
+    "titulo": "Plastic Memories",
+    "categorias": ["Drama", "Romance"],
+    "imagenes": [
+      "poner foto",
+      "poner foto",
+      "poner foto",
+      "poner foto"
+    ],
+    "capitulos": 13,
+    "emision": "05-04-2014",
+    "sinopsis": "La historia toma lugar en un futuro no muy lejano cuando los androides que parecen exactamente iguales a los humanos comienzan a esparcirse por el mundo. La compañía fabricadora de androides, SA Corp. creó a Giftia, un nuevo tipo de androide que tiene la mayor cantidad de emociones y características humanas hasta el momento. Sin embargo, debido a problemas tecnológicos, los androides tuvieron una vida de servicio, y una vez que pasan esto, ellos…"
+  },
+  {
+    "id": "7",
+    "titulo": "Dragon Ball Super",
+    "categorias": ["Acción", "Aventura", "Comedia"],
+    "imagenes": [
+      "poner foto",
+      "poner foto",
+      "poner foto",
+      "poner foto"
+    ],
+    "capitulos": 131,
+    "emision": "05-07-2015",
+    "sinopsis": "Después de derrotar a Majin Buu, la vida vuelve a ser tranquila una vez más. Goku vuelve a trabajar otra vez ya que Chichi le ordena que gane dinero, aunque él quiere seguir entrenando. Mientras, Goten, a punto de convertirse en cuñado de Videl, se embarca en un viaje con Trunks para encontrar un regalo para ella."
+  },
+  {
+    "id": "8",
+    "titulo": "Horimiya",
+    "categorias": ["Romance", "Comedia", "Drama"],
+    "imagenes": [
+      "poner foto",
+      "poner foto",
+      "poner foto",
+      "poner foto"
+    ],
+    "capitulos": 13,
+    "emision": "10-01-2021",
+    "sinopsis": "Aunque admirada en la escuela por su amabilidad y destreza académica, la estudiante de preparatoria Kyouko Hori ha estado escondiendo otro lado de ella. Con sus padres a menudo fuera de casa debido al trabajo, Hori tiene que cuidar de su hermano menor y hacer las tareas del hogar, sin tener tiempo para socializar fuera de la escuela. Mientras tanto, Izumi Miyamura es visto como un inquietante otaku que usa anteojos. Sin embargo, en realidad es una persona amable e inepta para estudiar. "
+  }
+]
