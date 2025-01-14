@@ -1,5 +1,5 @@
 export interface Serie {
-  id: string
+  _id: string
   titulo: string
   categorias: string[]
   imagenes: string[]
