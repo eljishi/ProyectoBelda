@@ -4,13 +4,16 @@ const seriesCtrl= {};
 
 seriesCtrl.getSeries = async(req, res) =>{
     const series=await Serie.find().then((data)=>{
-        res.send(200).json({
+        res.status(200).json({
             status:"Encontradas todas",
             data:data
         });
     })
-        .catch(err=>{res.status(400).json({error:"nao nao", message:err.message})});
-    console.error(err);
+        .catch(err=>{
+            res.status(400).json({error:"nao nao", message:err.message});
+            console.error(err);
+
+        });
 }
 
 
@@ -30,7 +33,7 @@ seriesCtrl.getSerie=async(req, res) =>{
     console.error(err);
 }
 
-seriesCtrl.addSeries=async(req, res) =>{
+seriesCtrl.addSerie=async(req, res) =>{
     const miSerie= new Serie(req.body);
     await miSerie.save().then(data=>{
         res.status(201).json({
@@ -79,7 +82,7 @@ seriesCtrl.deleteSerie=async(req, res) =>{
 })
 }
 
-seriesCtrl.getCategoria=async(req, res) =>{
+seriesCtrl.getCategorias=async(req, res) =>{
     await Serie.find().distinct('categoria').then((data)=>{
         res.status(200).json({
             status:"ok",
@@ -92,4 +95,4 @@ seriesCtrl.getCategoria=async(req, res) =>{
 }
 
 
-module.exports = {}
+module.exports = seriesCtrl;

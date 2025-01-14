@@ -12,4 +12,4 @@ const serieSchema = new Schema({
 })
 
 
-module.exports= mongoose.Model('Serie',serieSchema,'ProyectoBelda');
+module.exports= mongoose.model('Serie',serieSchema,'ProyectoBelda');

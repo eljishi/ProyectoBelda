@@ -11,7 +11,7 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(json());
 
-//app.use('/api/v1/series',require('./routes/series'));
+app.use('/api/v1/ProyectoBelda',require('./routes/series.routes'));
 app.use('/',(req,res)=>{res.status(404).json({status:"Endpoint no encontrado",
 message:"La api esta en"});});
 
