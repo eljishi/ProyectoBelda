@@ -23,7 +23,7 @@ export class SerieService {
   getSerie(id:string):Observable<ApiResponseSerie> {
     return this.http.get<ApiResponseSerie>(enviorment.apiUrl+'serie/'+id);
   }
-  getCategoria():Observable<ApiResponseSerieSinopsis> {
+  getCategorias():Observable<ApiResponseSerieSinopsis> {
     return this.http.get<ApiResponseSerieSinopsis>((enviorment.apiUrl+'sinopsis'));
   }
 
