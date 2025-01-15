@@ -1,1 +1,27 @@
+@defer (when series.length>0){
 
+  <div class="d-flex justify-content-center">
+    <h4 >{{series.length}} Series</h4>
+
+  </div>
+  <div class="container  d-grid justify-content-center">
+    @for (serie of series;track serie._id){
+      <div class="card" style="width: 100rem; margin: 10px">
+        <img src="{{serie.imagenes[0]}}"  class="img-fluid">
+        <div class="card-body">
+          <h5 class="card-title">{{serie.titulo}}</h5>
+          <p class="card-text">{{serie.sinopsis}} </p>
+          <p class="card-text" style="color: crimson">{{serie.categorias}}</p>
+          <a href="#" class="btn btn-primary">Editar</a>
+        </div>
+      </div>
+
+    }
+
+  </div>
+
+} @placeholder (){
+  <div class="spinner-grow text-light d-flex justify-content-center" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+}

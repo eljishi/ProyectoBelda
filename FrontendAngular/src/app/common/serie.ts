@@ -6,9 +6,9 @@ export interface ApiResponseSerie {
   status: string
   data: Serie
 }
-export interface ApiResponseSerieSinopsis {
+export interface ApiResponseSerieCategorias {
   status: string
-  data: string
+  data: string[]
 }
 export interface ApiResponseMessage {
   status: string,
@@ -20,6 +20,7 @@ export interface Serie {
   id: string
   titulo: string
   categorias: string[]
+  imagenes: string[]
   capitulos: number
   emision: string
   sinopsis: string
