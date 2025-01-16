@@ -4,20 +4,29 @@
     <h4 >{{series.length}} Series</h4>
 
   </div>
-  <div class="container  d-grid justify-content-center">
+  <div class="container  justify-content-center">
     @for (serie of series;track serie._id){
-      <div class="card" style="width: 100rem; margin: 10px">
-        <img src="{{serie.imagenes[0]}}"  class="img-fluid">
+      <div class="card" style="width:  auto; margin: 10px; height: auto">
+
         <div class="card-body">
           <h5 class="card-title">{{serie.titulo}}</h5>
           <p class="card-text">{{serie.sinopsis}} </p>
           <p class="card-text" style="color: crimson">{{serie.categorias}}</p>
-          <a href="#" class="btn btn-primary">Editar</a>
+        <div>
+          <a href="#" class="btn btn-primary" style="margin-right: 10px">Editar</a>
+          <a href="#" class="btn btn-primary">Ver Mas</a>
+        </div>
+
         </div>
       </div>
 
     }
 
+  </div>
+  <div>
+    <button mat-fab color="primary" style="position: fixed; bottom: 16px; right: 16px;border-radius: 50%; background-color: aqua" >
+      <mat-icon>+</mat-icon>
+    </button>
   </div>
 
 } @placeholder (){

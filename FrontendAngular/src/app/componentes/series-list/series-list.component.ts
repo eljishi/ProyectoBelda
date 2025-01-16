@@ -2,14 +2,15 @@ import {Component, inject,} from '@angular/core';
 import {SerieService} from "../../services/serie.service";
 import {Serie} from "../../common/serie";
 import {MatIconModule} from "@angular/material/icon";
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-series-list',
   standalone: true,
   imports: [
-    MatIconModule
-
+    MatButtonModule,
+    MatIconModule,
   ],
   templateUrl: './series-list.component.html',
   styleUrl: './series-list.component.css'

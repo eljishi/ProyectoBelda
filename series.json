@@ -5,9 +5,9 @@
     "categorias": ["Acción", "Aventura", "Comedia","Superpoderes","Shounen"],
     "imagenes": [
       "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/a249096c7812deb8c3c2c907173f3774.jpg",
-      "poner foto",
-      "poner foto",
-      "poner foto"
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZu3B8osHlu8F-KYSmPLgkdR2uQDCRcqXsAg&s",
+      "https://static.wikia.nocookie.net/onepiece/images/6/6b/Slide_1_preview.png/revision/latest/scale-to-width-down/732?cb=20231127153814&path-prefix=es",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSOJ-lRxbjBM4URYpJV6WoRGs5t2YJ0Ww3tw&s"
     ],
     "capitulos": 1122,
     "emision": "20-10-1999",
@@ -18,10 +18,10 @@
     "titulo": "Your lie in april",
     "categorias": ["Drama", "Romance", "Comedia","Shounen"],
     "imagenes": [
-      "poner foto",
-      "poner foto",
-      "poner foto",
-      "poner foto"
+      "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/589632aedf2ed936e2c7ba95ed6ed5d4.jpe",
+      "https://wherenoonecanseeme.wordpress.com/wp-content/uploads/2015/05/shigatsu_wa_kimi_no_uso_wallpaper1.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsTnjoQ0UVSx2YY1QK7iWulX65IB06PsYZpA&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-3nMbONLVMUtMyjB6UWGQACvbG_mj4iZgiA&s"
     ],
     "capitulos": 23,
     "emision": "10-10-2014",
@@ -32,10 +32,10 @@
     "titulo": "Blue lock",
     "categorias": ["Deportes"],
     "imagenes": [
-      "poner foto",
-      "poner foto",
-      "poner foto",
-      "poner foto"
+      "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/bc5934e65dcfc3e6f1f783160ce023fb.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx66DbNiPjJANAs8_YHOFvJ378iNWaldLYPA&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUPOA7z9TmjD6JsWAZdJw5O16MTGFukzBTqw&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpIjKLhh_7UrtqRdVg-dC2xDIzxpQ98TkI4w&s"
     ],
     "capitulos": 38,
     "emision": "9-10-2022",
@@ -46,10 +46,10 @@
     "titulo": "Haikyuu!!",
     "categorias": ["Deportes", "Drama", "Comedia","Shounen"],
     "imagenes": [
-      "poner foto",
-      "poner foto",
-      "poner foto",
-      "poner foto"
+      "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/be304f43b41b60ce2f04c2f9629b0adf.jpg",
+      "https://a.storyblok.com/f/178900/960x540/05fe378b30/haikyu-karasuno-high.jpg/m/filters:quality(95)format(webp)",
+      "https://i.blogs.es/b5824a/haikyuu/1366_2000.jpeg",
+      "https://i0.wp.com/www.septimacaja.com/wp-content/uploads/71ZxpODh1iL._AC_SY679_.jpg?resize=480%2C300&ssl=1"
     ],
     "capitulos": 26,
     "emision": "06-04-2014",
@@ -60,10 +60,10 @@
     "titulo": "Black Clover",
     "categorias": ["Acción", "Aventura", "Fantasía", "Magia"],
     "imagenes": [
-      "poner foto",
-      "poner foto",
-      "poner foto",
-      "poner foto"
+      "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/e108ae17d8d0407417cac40eb52d849a.jpg",
+      "https://i.redd.it/a74bro3ymj1d1.jpeg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqM43gH02Ep5GU2nN2WVl9GPgviCSSDoVT4Q&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuw56YUCcYIUqyjSGBR1xNn0Cwu9TNCC_FYw&s"
     ],
     "capitulos": 170,
     "emision": "03-10-2017",
@@ -74,10 +74,10 @@
     "titulo": "Plastic Memories",
     "categorias": ["Drama", "Romance"],
     "imagenes": [
-      "poner foto",
-      "poner foto",
-      "poner foto",
-      "poner foto"
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVmqxPX2WtTaFtzj2cZZGPz62x8LXdW0QT7g&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWAtkrLmTprkItQbJyHdJLoLdCRhod03vFsA&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn_bcdYRkJXf83LZSozkPRNnN5Y6sNcPZp7A&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXJi9o154gJBHjFW5pvk9cljjF3P8WdaxqAA&s"
     ],
     "capitulos": 13,
     "emision": "05-04-2014",
@@ -88,10 +88,10 @@
     "titulo": "Dragon Ball Super",
     "categorias": ["Acción", "Aventura", "Comedia"],
     "imagenes": [
-      "poner foto",
-      "poner foto",
-      "poner foto",
-      "poner foto"
+      "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/26079ab060401d8a76039e985d63a3e9.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYbDcg1DGbLu9J3SJIsAyOwhLbori3cpP4YQ&s",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmVAqTLcs-_wDXXAEJ6EM4OMUj3jLYPNvbqQ&s",
+      "https://hips.hearstapps.com/hmg-prod/images/dragon-ball-super-regreso-verano-1537795698.jpg"
     ],
     "capitulos": 131,
     "emision": "05-07-2015",
@@ -102,10 +102,10 @@
     "titulo": "Horimiya",
     "categorias": ["Romance", "Comedia", "Drama"],
     "imagenes": [
-      "poner foto",
-      "poner foto",
-      "poner foto",
-      "poner foto"
+      "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/6c985c5f2bf94a05437fff8ecdd806f6.jpg",
+      "https://a.storyblok.com/f/178900/1504x846/5de7a3fd9c/horimiya-header.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5UBaP0y4D8bb7_HUZDpLAMFpocrFeo7XN8w&s",
+      "https://trielalenkov.wordpress.com/wp-content/uploads/2021/04/horimiya-anime.jpg"
     ],
     "capitulos": 13,
     "emision": "10-01-2021",
