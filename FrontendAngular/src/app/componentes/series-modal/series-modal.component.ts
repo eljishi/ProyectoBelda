@@ -2,12 +2,17 @@ import {Component, inject, Input, OnInit} from '@angular/core';
 import {Serie} from "../../common/serie";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {SerieService} from "../../services/serie.service";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {faPlusCircle} from "@fortawesome/free-solid-svg-icons";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 
 @Component({
   selector: 'app-series-modal',
   standalone: true,
-  imports: [],
+  imports: [
+    ReactiveFormsModule,
+    FaIconComponent
+  ],
   templateUrl: './series-modal.component.html',
   styleUrl: './series-modal.component.css'
 })
@@ -20,7 +25,7 @@ export class SeriesModalComponent implements OnInit {
   activeModal:NgbActiveModal=inject(NgbActiveModal);
   private readonly seriesService: SerieService=inject(SerieService);
   private readonly formBuilder: FormBuilder=inject(FormBuilder);
-
+  protected readonly faPlusCircle = faPlusCircle;
 
   formSeries:FormGroup=this.formBuilder.group({
     _id:[''],
@@ -77,4 +82,37 @@ export class SeriesModalComponent implements OnInit {
     }
     this.anadirCategoria.reset();
   }
+
+  onSubmit() {
+    if (this.editar) {
+      this.seriesService.updateSerie(this.formSeries.getRawValue()).subscribe(
+        {
+          next:value => {
+            console.log(value)},
+          complete:() =>{
+            this.activeModal.dismiss();
+      },
+          error: error => {
+            console.error(error);
+          }
+        }
+      )
+    }
+    else {
+      this.seriesService.addSerie(this.formSeries.getRawValue()).subscribe(
+        {
+          next:value => {
+            console.log(value)},
+          complete:() =>{
+            this.activeModal.dismiss();
+          },
+          error: error => {
+            console.error(error);
+          }
+        }
+      )
+    }
+  }
+
+
 }
