@@ -1,17 +1,120 @@
-<div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="miModalLabel">
+        {{ editar ? titulo.value : 'New Movie' }}</h5>
+      <button type="button"
+              class="btn-close" (click)="activeModal.dismiss()"
+              aria-label="Close"></button>
+
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="formSeries" (ngSubmit)="onSubmit()">
+        <div class="form-floating mb-3">
+          <input formControlName="Titulo"
+                 type="text" class="form-control"
+                 id="titulo"
+                 placeholder="Titulo">
+          <label for="titulo">Titulo</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input formControlName="year"
+                 type="number" class="form-control"
+                 id="emision"
+                 placeholder="emision">
+          <label for="emision">Fecha emision</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input formControlName="year"
+                 type="episodios" class="form-control"
+                 id="episodios"
+                 placeholder="episodios">
+          <label for="episodios">Episodios</label>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="form-floating mb-3">
+              <input formControlName="poster"
+                     type="text" class="form-control"
+                     id="imagenes"
+                     placeholder="Imagen">
+              <label for="imagenes">Imagen</label>
+            </div>
+          </div>
+          <div class="col-4">
+            <img src="{{imagen.value || 'assets/images/no-image-icon.jpg'}}"
+
+                 class="img-fluid" alt="...">
+          </div>
+        </div>
+        <div class="form-floating mb-3 mt-3">
+<textarea formControlName="sinopsis"
+
+          rows="7"
+          class="form-control"
+          id="sinopsis">
+</textarea>
+          <label for="sinopsis">Sinopsis</label>
+        </div>
+
+        @if(editar){
+          <div>
+            <label for="Select">Genres</label>
+            <select class="form-select" id="Select"
+                    aria-label="Categorias" multiple
+                    formControlName="categorias">
+
+
+              @for (cat of categoria;track $index){
+                <option [value]="cat">{{ cat }}</option>
+              }
+            </select>
+          </div>
+        } @else {
+          <div>
+            <label for="newSelect">Categorias</label>
+            <select class="form-select" id="newSelect"
+                    aria-label="Categorias" multiple
+                    formControlName="Categorias">
+              @for (cat of categoria; track $index){
+                <option [value]="cat">{{ cat }}</option>
+              }
+            </select>
+          </div>
+        }
+
+        <div class="row mt-3">
+          <div class="col-8">
+            <div [formGroup]="nuevaCategoria" class="form-floating mb-3">
+              <input
+                type="text" class="form-control"
+                id="nuevaCategoria"
+                formControlName="nuevaCategoria"
+                placeholder="Nueva categoria">
+              <label for="nuevaCategoria">
+                Nueva Categoria</label>
+            </div>
+
+          </div>
+          <div class="col-4 pt-2">
+
+            <h3><fa-icon [icon]="faPlusCircle" class="pointer text-success"
+
+                         (click)="anadirNuevaCategoria(anadirCategoria.value)"></fa-icon></h3>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+
+      <button type="button" class="btn btn-secondary"
+
+              (click)="activeModal.dismiss()">Cerrar
+      </button>
+
+      <button type="submit" class="btn btn-primary"
+
+              (click)="onSubmit()">Guardar</button>
     </div>
   </div>
 </div>

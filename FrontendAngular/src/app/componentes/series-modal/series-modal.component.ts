@@ -56,6 +56,9 @@ export class SeriesModalComponent implements OnInit {
   }get sinopsis():any{
     return this.formSeries.get('sinopsis');
   }
+  get imagen():any{
+    return this.formSeries.get('imagenes');
+  }
   get nuevaCategoria():any{
   return this.anadirCategoria.get('nuevaCategoria');
 }
