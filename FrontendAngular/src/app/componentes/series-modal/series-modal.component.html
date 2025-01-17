@@ -2,119 +2,65 @@
   <div class="modal-content">
     <div class="modal-header">
       <h5 class="modal-title" id="miModalLabel">
-        {{ editar ? titulo.value : 'New Movie' }}</h5>
-      <button type="button"
-              class="btn-close" (click)="activeModal.dismiss()"
-              aria-label="Close"></button>
-
+        {{ editar ? titulo?.value : 'Nueva serie' }}</h5>
+      <a>Modal serie</a>
+      <button type="button" class="btn-close" (click)="activeModal.dismiss()" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-      <form [formGroup]="formSeries" (ngSubmit)="onSubmit()">
+      <form [formGroup]="formSeries">
         <div class="form-floating mb-3">
-          <input formControlName="Titulo"
-                 type="text" class="form-control"
-                 id="titulo"
-                 placeholder="Titulo">
+          <input formControlName="titulo" type="text" class="form-control" id="titulo" placeholder="Titulo">
           <label for="titulo">Titulo</label>
         </div>
         <div class="form-floating mb-3">
-          <input formControlName="year"
-                 type="number" class="form-control"
-                 id="emision"
-                 placeholder="emision">
+          <input formControlName="emision" type="text" class="form-control" id="emision" placeholder="emision">
           <label for="emision">Fecha emision</label>
         </div>
         <div class="form-floating mb-3">
-          <input formControlName="year"
-                 type="episodios" class="form-control"
-                 id="episodios"
-                 placeholder="episodios">
-          <label for="episodios">Episodios</label>
+          <input formControlName="capitulos" type="number" class="form-control" id="capitulos" placeholder="Episodios">
+          <label for="capitulos">Episodios</label>
         </div>
         <div class="row">
           <div class="col-8">
             <div class="form-floating mb-3">
-              <input formControlName="poster"
-                     type="text" class="form-control"
-                     id="imagenes"
-                     placeholder="Imagen">
+              <input formControlName="imagenes" type="text" class="form-control" id="imagenes" placeholder="Imagen">
               <label for="imagenes">Imagen</label>
             </div>
           </div>
           <div class="col-4">
-            <img src="{{imagen.value || 'assets/images/no-image-icon.jpg'}}"
-
-                 class="img-fluid" alt="...">
+            <img [src]="imagen?.value || 'assets/images/no-image-icon.jpg'" class="img-fluid" alt="...">
           </div>
         </div>
         <div class="form-floating mb-3 mt-3">
-<textarea formControlName="sinopsis"
-
-          rows="7"
-          class="form-control"
-          id="sinopsis">
-</textarea>
+          <textarea formControlName="sinopsis" rows="7" class="form-control" id="sinopsis"></textarea>
           <label for="sinopsis">Sinopsis</label>
         </div>
 
-        @if(editar){
-          <div>
-            <label for="Select">Genres</label>
-            <select class="form-select" id="Select"
-                    aria-label="Categorias" multiple
-                    formControlName="categorias">
-
-
-              @for (cat of categoria;track $index){
-                <option [value]="cat">{{ cat }}</option>
-              }
-            </select>
-          </div>
-        } @else {
-          <div>
-            <label for="newSelect">Categorias</label>
-            <select class="form-select" id="newSelect"
-                    aria-label="Categorias" multiple
-                    formControlName="Categorias">
-              @for (cat of categoria; track $index){
-                <option [value]="cat">{{ cat }}</option>
-              }
-            </select>
-          </div>
-        }
+        <div>
+          <label for="Select">Categorias</label>
+          <select class="form-select" id="Select" aria-label="Categorias" multiple formControlName="categorias">
+            <option *ngFor="let cat of categoria" [value]="cat">{{ cat }}</option>
+          </select>
+        </div>
 
         <div class="row mt-3">
           <div class="col-8">
-            <div [formGroup]="nuevaCategoria" class="form-floating mb-3">
-              <input
-                type="text" class="form-control"
-                id="nuevaCategoria"
-                formControlName="nuevaCategoria"
-                placeholder="Nueva categoria">
-              <label for="nuevaCategoria">
-                Nueva Categoria</label>
+            <div [formGroup]="anadirCategoria" class="form-floating mb-3">
+              <input type="text" class="form-control" id="nuevaCategoria" formControlName="nuevaCategoria" placeholder="Nueva categoria">
+              <label for="nuevaCategoria">Nueva Categoria</label>
             </div>
-
           </div>
           <div class="col-4 pt-2">
-
-            <h3><fa-icon [icon]="faPlusCircle" class="pointer text-success"
-
-                         (click)="anadirNuevaCategoria(anadirCategoria.value)"></fa-icon></h3>
+            <h3>
+              <fa-icon [icon]="faPlusCircle" class="pointer text-success" (click)="anadirNuevaCategoria()"></fa-icon>
+            </h3>
           </div>
         </div>
       </form>
     </div>
     <div class="modal-footer">
-
-      <button type="button" class="btn btn-secondary"
-
-              (click)="activeModal.dismiss()">Cerrar
-      </button>
-
-      <button type="submit" class="btn btn-primary"
-
-              (click)="onSubmit()">Guardar</button>
+      <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cerrar</button>
+      <button type="button" class="btn btn-primary" (click)="onSubmit()">Guardar</button>
     </div>
   </div>
 </div>

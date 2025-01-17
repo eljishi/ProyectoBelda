@@ -1,4 +1,13 @@
-import {BadRequestException, Body, Controller, Get, NotFoundException, Param, Post} from '@nestjs/common';
+import {
+    BadRequestException,
+    Body,
+    Controller, Delete,
+    Get,
+    InternalServerErrorException,
+    NotFoundException,
+    Param,
+    Post, Put, Query
+} from '@nestjs/common';
 import {SerieService} from "./service/serie/serie.service";
 import {SerieDto} from "./dto/serie.dto/serie.dto";
 
@@ -50,12 +59,98 @@ export class SeriesController {
             })
 
         }catch (e:any){
-            return new BadRequestException({
+            if (e instanceof NotFoundException){
+                throw e
+            }
+            throw new InternalServerErrorException({
                 status:'Error',
                 message:e.message
             })
         }
     }
+
+    @Get('byName')
+    async getSerieByName(@Query('name')name:string){
+        try {
+            return await this.serieService.getSerieByName(name);
+        }catch (e:any){
+            throw new InternalServerErrorException({
+                status:"Error",
+                message:e.message
+            })
+        }
+    }
+
+    @Put('/:id')
+    async updateSerie(@Param('id')id:string,@Body()serieDto:SerieDto){
+        try {
+            const updateSerie=
+                await this.serieService.updateSerie(
+                    id,serieDto
+                );
+            if (!updateSerie){
+                throw new NotFoundException({
+                    status:"Error",
+                    message:"No encontrada"
+                })
+            }
+            return{
+                status:"Ok",
+                message:"Serie actualizada"
+            }
+        }catch (e:any){
+            if (e instanceof NotFoundException){
+                throw e
+            }
+            throw new InternalServerErrorException({
+                status:"Error",
+                message:e.message
+            })
+        }
+
+    }
+
+    @Delete('/:id')
+    async deleteSerie(@Param('id')id:string){
+        const deleteSerie=await this.serieService.deleteSerie(id);
+        if (!deleteSerie){
+            throw new NotFoundException({
+                status:"Error",
+                message:"No encontrada"
+            })
+        }
+        return{
+            status:"Ok",
+            message:"Serrie borrada"
+        }
+
+    }catch (e:any){
+        if (e instanceof NotFoundException){
+            throw e
+        }
+        throw new InternalServerErrorException({
+            status:"Error",
+            message:e.message
+        })
+    }
+
+
+    @Get('categorias')
+    async getCategorias() {
+        try {
+            const categorias = await this.serieService.getCategorias();
+            return {
+                status: 'ok',
+                data: categorias
+            }
+        } catch (e: any) {
+            throw new InternalServerErrorException({
+                status: "Error",
+                message: e.message
+            });
+        }
+    }
+
 
 }
 

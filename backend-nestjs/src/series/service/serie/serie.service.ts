@@ -30,9 +30,9 @@ export class SerieService {
     )
     }
 
-    async updateSerie(serieDto:SerieDto):Promise<any>{
+    async updateSerie(id:string, serieDto:SerieDto):Promise<any>{
         return this.serieModel.findByIdAndUpdate(
-            serieDto._id,
+            id,
             {$set:serieDto},
             {new:true}
         )
