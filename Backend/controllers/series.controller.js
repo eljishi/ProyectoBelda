@@ -43,22 +43,41 @@ seriesCtrl.addSerie=async(req, res) =>{
     }).catch(err=>{res.status(400).json({status:"error",message:err.message})})
 }
 
-seriesCtrl.updateSerie=async(req, res) =>{
-    const serie= req.body;
-    await Serie.findByIdAndUpdate(
-        req.params.id,{$set:serie},{new:true}
-    ).then((data)=>{
-        if(data)res.status(200).json({status:"Actualizada correctamente",message:"Actualizada correctamente"
-        })
-        else res.status(404).json({
-            status:"no encontrado",
-            message:"serie no encontrada"
-        })
+seriesCtrl.updateSerie = async (req, res) => {
+    try {
+        const serie = req.body; // Datos del cuerpo de la petición
+        const id = req.params.id; // ID del parámetro de la URL
 
-    }).catch(err=>{
-        res.status(400).json({status:"error",message:err.message})
-    })
-    console.error(err);
+        // Actualizar la serie
+        const updatedSerie = await Serie.findByIdAndUpdate(
+            id,
+            { $set: serie },
+            { new: true } // Devuelve el documento actualizado
+        );
+
+        // Verificar si se encontró la serie
+        if (updatedSerie) {
+            return res.status(200).json({
+                status: "Actualizada correctamente",
+                message: "Actualizada correctamente",
+                data: updatedSerie, // Puedes incluir los datos actualizados si es necesario
+            });
+        } else {
+            return res.status(404).json({
+                status: "No encontrado",
+                message: "Serie no encontrada",
+            });
+        }
+    } catch (err) {
+        // Manejar errores
+        console.error(err);
+        return res.status(400).json({
+            status: "Error",
+            message: err.message,
+        });
+    }
+
+
 
 }
 

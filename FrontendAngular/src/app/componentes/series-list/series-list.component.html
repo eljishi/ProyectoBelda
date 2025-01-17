@@ -1,36 +1,34 @@
 @defer (when series.length>0){
 
   <div class="d-flex justify-content-center">
-    <h4 >{{series.length}} Series</h4>
-
+    <h4>{{series.length}} Series</h4>
   </div>
-  <div class="container  justify-content-center">
-    @for (serie of series;track serie._id){
-      <div class="card" style="width:  auto; margin: 10px; height: auto">
 
+  <div class="container justify-content-center">
+    @for (serie of series; track serie._id){
+      <div class="card" style="width: auto; margin: 10px; height: auto;">
+        <img src="{{serie.imagenes}}" class="card-img-top" style="max-height: 200px; object-fit: cover;">
         <div class="card-body">
           <h5 class="card-title">{{serie.titulo}}</h5>
-          <p class="card-text">{{serie.sinopsis}} </p>
-          <p class="card-text" style="color: crimson">{{serie.categorias}}</p>
+          <p class="card-text">{{serie.sinopsis}}</p>
+          <p class="card-text" style="color: crimson;">{{serie.categorias}}</p>
 
           <div class="d-flex">
             <div>
-              <a  (click)="editarSerie(serie)" class="btn btn-primary" style="margin-right: 10px">Editar</a>
-              <a href="#" class="btn btn-primary">Ver Mas</a>
+              <a (click)="editarSerie(serie)" class="btn btn-primary" style="margin-right: 10px;">Editar</a>
+              <a href="#" class="btn btn-primary">Ver Más</a>
             </div>
             <div class="ml-auto">
               <a (click)="eliminarSerie(serie)" class="btn justify-content-center" style="color: white; background: crimson;">Eliminar</a>
             </div>
           </div>
-
         </div>
       </div>
-
     }
-
   </div>
+
   <div>
-    <button (click)="anadirSerie()" mat-fab color="primary" style="position: fixed; bottom: 16px; right: 16px;border-radius: 50%; background-color: aqua" >
+    <button (click)="anadirSerie()" mat-fab color="primary" style="position: fixed; bottom: 16px; right: 16px; border-radius: 50%; background-color: aqua;">
       <mat-icon>+</mat-icon>
     </button>
   </div>
