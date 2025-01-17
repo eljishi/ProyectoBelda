@@ -7,7 +7,7 @@
   <div class="container justify-content-center">
     @for (serie of series; track serie._id){
       <div class="card" style="width: auto; margin: 10px; height: auto;">
-        <img src="{{serie.imagenes}}" class="card-img-top" style="max-height: 200px; object-fit: cover;">
+        <img src="{{serie.imagenes[0]}}" class="card-img-top" style="max-height: 200px; object-fit: cover;">
         <div class="card-body">
           <h5 class="card-title">{{serie.titulo}}</h5>
           <p class="card-text">{{serie.sinopsis}}</p>

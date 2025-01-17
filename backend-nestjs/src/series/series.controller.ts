@@ -11,7 +11,7 @@ import {
 import {SerieService} from "./service/serie/serie.service";
 import {SerieDto} from "./dto/serie.dto/serie.dto";
 
-@Controller('api/vi/ProyectoBelda')
+@Controller('api/v1/ProyectoBelda')
 export class SeriesController {
     constructor(private readonly serieService:SerieService) {
     }

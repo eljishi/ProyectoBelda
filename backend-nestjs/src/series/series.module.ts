@@ -11,7 +11,7 @@ import {SerieSchema} from "./schema/serie.schema/serie.schema";
             {
               name:'Serie',
               schema: SerieSchema,
-              collection:'ProyctoBelda'
+              collection:'ProyectoBelda'
             }
           ]
       )
