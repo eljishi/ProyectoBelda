@@ -5,6 +5,9 @@ import {MatIconModule} from "@angular/material/icon";
 import { MatButtonModule } from '@angular/material/button';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {SeriesModalComponent} from "../series-modal/series-modal.component";
+import {RouterLink} from "@angular/router";
+import {FormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
 
 
 @Component({
@@ -13,6 +16,8 @@ import {SeriesModalComponent} from "../series-modal/series-modal.component";
   imports: [
     MatButtonModule,
     MatIconModule,
+    FormsModule,
+    MatInputModule,
   ],
   templateUrl: './series-list.component.html',
   styleUrl: './series-list.component.css'
@@ -25,9 +30,11 @@ private readonly  modalService: NgbModal=inject(NgbModal);
 series:Serie[] = [];
 categorias:string[]=[];
 
+
 constructor() {
   this.loadSeries();
 }
+
 
 
   private loadSeries() {
@@ -85,4 +92,7 @@ constructor() {
     modalRef.result.then(()=>{this.loadSeries()})
       .catch(err=>{this.loadSeries()})
   }
+
+
+
 }

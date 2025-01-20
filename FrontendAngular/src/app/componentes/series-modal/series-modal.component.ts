@@ -84,4 +84,8 @@ export class SeriesModalComponent implements OnInit {
       }
     }
   }
+
+  reloadPage() {
+    location.reload();
+  }
 }

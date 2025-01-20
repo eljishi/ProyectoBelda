@@ -1,13 +1,26 @@
 @defer (when series.length>0){
+  <!--
+   <div class="container d-flex justify-content-center align-items-center">
+     <form class="d-flex flex-row align-items-center" id="searchForm">
+       <input  class="form-control"  type="search" placeholder="Buscar serie por título"
+      matInput
+      < #searchKeyword
+        (keyup)="buscarTitulo(searchKeyword.value)"
+               name="searchTitle"
+               id="searchKey">
 
+
+     </form>
+   </div>
+   -->
   <div class="d-flex justify-content-center">
     <h4>{{series.length}} Series</h4>
   </div>
 
-  <div class="container justify-content-center">
+  <div class="container justify-content-center" >
     @for (serie of series; track serie._id){
-      <div class="card" style="width: auto; margin: 10px; height: auto;">
-        <img src="{{serie.imagenes[0]}}" class="card-img-top" style="max-height: 200px; object-fit: cover;">
+      <div class="card" style="width: auto; margin: 10px; height: auto;" >
+        <img src="{{serie.imagenes[0]}}" class="card-img-top" style="height: auto; object-fit: cover;">
         <div class="card-body">
           <h5 class="card-title">{{serie.titulo}}</h5>
           <p class="card-text">{{serie.sinopsis}}</p>
@@ -15,11 +28,11 @@
 
           <div class="d-flex">
             <div>
-              <a (click)="editarSerie(serie)" class="btn btn-primary" style="margin-right: 10px;">Editar</a>
+              <a (click)="editarSerie(serie)" href="#" class="btn btn-primary" style="margin-right: 10px;">Editar</a>
               <a href="#" class="btn btn-primary">Ver Más</a>
             </div>
             <div class="ml-auto">
-              <a (click)="eliminarSerie(serie)" class="btn justify-content-center" style="color: white; background: crimson;">Eliminar</a>
+              <a (click)="eliminarSerie(serie)" href="#" class="btn justify-content-center" style="color: white; background: crimson;">Eliminar</a>
             </div>
           </div>
         </div>

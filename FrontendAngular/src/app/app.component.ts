@@ -12,4 +12,5 @@ import {SeriesListComponent} from "./componentes/series-list/series-list.compone
 })
 export class AppComponent {
   title = 'FrontendAngular';
+
 }
