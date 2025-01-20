@@ -36,4 +36,5 @@ export class SerieService {
   deleteSerie(id:string):Observable<ApiResponseMessage> {
     return this.http.delete<ApiResponseMessage>(enviorment.apiUrl+id)
   }
+
 }

@@ -152,6 +152,25 @@ export class SeriesController {
     }
 
 
+    @Get('search')
+    async getSerieByTitleOrSynopsis(@Query('query') query: string) {
+        try {
+            const series = await this.serieService.getSerieByTitleOrSynopsis(query);
+            return {
+                status: 'ok',
+                data: series
+            };
+        } catch (e: any) {
+            throw new InternalServerErrorException({
+                status: "Error",
+                message: e.message
+            });
+        }
+    }
+
+
+
+
 }
 
 

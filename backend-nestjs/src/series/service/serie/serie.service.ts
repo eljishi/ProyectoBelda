@@ -3,6 +3,7 @@ import {InjectModel} from "@nestjs/mongoose";
 import {Model} from "mongoose";
 import {Serie} from "../../interface/serie/serie.interface";
 import {SerieDto} from "../../dto/serie.dto/serie.dto";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class SerieService {
@@ -44,4 +45,14 @@ export class SerieService {
     async getCategorias():Promise<string[]>{
         return this.serieModel.find().distinct('categoria')
     }
+
+    getSerieByTitleOrSynopsis(searchTerm: string): Promise<any[]> {
+        return this.serieModel.find({
+            $or: [
+                { titulo: { $regex: searchTerm, $options: 'i' } },
+                { sinopsis: { $regex: searchTerm, $options: 'i' } }
+            ]
+        }).exec();
+    }
+
 }

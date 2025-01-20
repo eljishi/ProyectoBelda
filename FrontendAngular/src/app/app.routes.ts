@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import {SeriesListComponent} from "./componentes/series-list/series-list.component";
+import {SerieBusquedaComponent} from "./componentes/serie-busqueda/serie-busqueda.component";
 
 export const routes: Routes = [
   {
@@ -10,5 +11,9 @@ export const routes: Routes = [
   {
     path: 'series-list',
     component:SeriesListComponent
+  },
+  {
+    path: 'serie-busqueda',
+    component:SerieBusquedaComponent
   }
 ];
