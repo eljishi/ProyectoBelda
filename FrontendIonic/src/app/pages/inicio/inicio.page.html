@@ -1,0 +1,35 @@
+
+<ion-content>
+  @for (serie of miArray;track $index){
+
+   <ion-card style="border-radius: 5%">
+     <ion-card-content>
+       <ion-img [src]="serie.imagenes[0]"></ion-img>
+     </ion-card-content>
+
+     <ion-card-content>
+       <ion-card-title>{{serie.titulo}}</ion-card-title>
+     </ion-card-content>
+
+     <div class="categories">
+        @for(categoria of serie.categorias;track $index){
+          <ion-chip>
+            {{categoria }}
+          </ion-chip>
+        }
+     </div>
+
+     <ion-card-content>
+      <ion-card-subtitle>{{serie.sinopsis}}</ion-card-subtitle>
+     </ion-card-content>
+
+     <ion-card-content>
+       <ion-text>Capitulos: {{serie.capitulos}}</ion-text>
+       <ion-text style="padding-left: 20px">Fecha emision: {{serie.emision}}</ion-text>
+     </ion-card-content>
+
+   </ion-card>
+
+  }
+
+</ion-content>

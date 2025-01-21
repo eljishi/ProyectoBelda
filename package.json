@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "@angular/router": "^19.0.6",
-    "angular": "^1.8.3"
+    "angular": "^1.8.3",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "ng2-search-filter": "^0.5.1"
   }
 }

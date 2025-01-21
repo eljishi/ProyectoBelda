@@ -1,0 +1,9 @@
+.container {
+  height: 100vh; /* O el tamaño que necesites */
+  overflow-y: auto;
+}
+ion-card {
+  margin-bottom: 16px; /* Espaciado entre tarjetas */
+  max-width: 100%;     /* Asegúrate de que no se desborden */
+}
+

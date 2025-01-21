@@ -5,9 +5,10 @@ import {MatIconModule} from "@angular/material/icon";
 import { MatButtonModule } from '@angular/material/button';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {SeriesModalComponent} from "../series-modal/series-modal.component";
-import {RouterLink} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import {MatChipsModule} from "@angular/material/chips";
+
 
 
 @Component({
@@ -18,6 +19,7 @@ import {MatInputModule} from "@angular/material/input";
     MatIconModule,
     FormsModule,
     MatInputModule,
+    MatChipsModule,
   ],
   templateUrl: './series-list.component.html',
   styleUrl: './series-list.component.css'
@@ -27,7 +29,7 @@ export class SeriesListComponent {
 private readonly  serieService: SerieService=inject(SerieService);
 private readonly  modalService: NgbModal=inject(NgbModal);
 
-series:Serie[] = [];
+series:Serie[]=[];
 categorias:string[]=[];
 
 
