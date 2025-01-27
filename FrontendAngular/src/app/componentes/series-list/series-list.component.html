@@ -1,13 +1,17 @@
 @defer (when series.length>0){
 
-   <div class="container d-flex justify-content-center align-items-center">
-     <form class="d-flex flex-row align-items-center" id="searchForm">
-       <input  class="form-control"  type="search" placeholder="Buscar serie por título" />
-     </form>
-   </div>
-
-  <div class="d-flex justify-content-center">
-    <h4>{{series.length}} Series</h4>
+  <div class="container d-flex justify-content-center align-items-center">
+    <form class="d-flex flex-row align-items-center" id="searchForm" (ngSubmit)="onSearch($event)">
+      <input
+        class="form-control"
+        id="searchInput"
+        type="search"
+        placeholder="Buscar serie por título"
+        aria-label="Search"
+        name="searchTerm"
+        [(ngModel)]="searchTerm"
+        (input)="onSearch($event)">
+    </form>
   </div>
 
   <div class="container justify-content-center" >
@@ -23,24 +27,26 @@
           }
 
           <div class="d-flex">
-            <div>
-              <a (click)="editarSerie(serie)" class="btn btn-primary" style="margin-right: 10px;">Editar</a>
-            </div>
-            <div class="ml-auto">
-              <a (click)="eliminarSerie(serie)" href="#" class="btn justify-content-center" style="color: white; background: crimson;">Eliminar</a>
-            </div>
+          <div>
+            <button (click)="editarSerie(serie)" class="btn btn-primary me-2">Editar</button>
           </div>
+          <div class="ms-auto">
+            <button (click)="eliminarSerie(serie)" class="btn btn-danger">Eliminar</button>
+          </div>
+        </div>
         </div>
       </div>
     }
   </div>
 
-  <div>
-    <button (click)="anadirSerie()" mat-fab color="primary" style="position: fixed; bottom: 16px; right: 16px; border-radius: 50%; background-color: aqua;">
-      <mat-icon>+</mat-icon>
-    </button>
-  </div>
-
+  <button
+    (click)="anadirSerie()"
+    mat-fab
+    color="primary"
+    style="position: fixed; bottom: 16px; right: 16px; border-radius: 50%; background-color: aqua;"
+  >
+    <mat-icon>+</mat-icon>
+  </button>
 } @placeholder (){
   <div class="spinner-grow text-light d-flex justify-content-center" role="status">
     <span class="visually-hidden">Loading...</span>

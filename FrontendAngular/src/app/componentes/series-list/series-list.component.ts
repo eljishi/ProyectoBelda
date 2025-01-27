@@ -29,8 +29,10 @@ export class SeriesListComponent {
 private readonly  serieService: SerieService=inject(SerieService);
 private readonly  modalService: NgbModal=inject(NgbModal);
 
-series:Serie[]=[];
-categorias:string[]=[];
+  series: Serie[] = [];
+  allSeries: Serie[] = [];
+  categorias: string[] = [];
+  searchTerm: string = '';
 
 
 constructor() {
@@ -40,25 +42,44 @@ constructor() {
 
 
   private loadSeries() {
-    this.serieService.getSeries().subscribe(
-      {
+    this.serieService.getSeries().subscribe({
+      next: value => {
+        this.series = value.data;
+        this.allSeries = [...value.data];
+      },
+      error: err => {
+        console.error(err.message);
+      },
+      complete: () => {
+        console.log('Series cargadas');
+      }
+    });
 
-        next:value => {this.series=value.data},
-        error: err => {
-          console.error(err.message)},
-        complete: () => {
-          console.log('Series cargadas')}
+    this.serieService.getCategorias().subscribe({
+      next: value => {
+        this.categorias = value.data;
+      },
+      error: err => {
+        console.error(err.message);
+      },
+      complete: () => {
+        console.log('Categorias cargadas');
       }
-    )
-    this.serieService.getCategorias().subscribe(
-      {
-        next:value => {this.categorias=value.data},
-        error: err => {
-          console.error(err.message)},
-        complete: () => {
-          console.log('Categorias cargadas')}
-      }
-    )
+    });
+  }
+
+  onSearch(event: Event): void {
+
+
+    if (!this.searchTerm || this.searchTerm.trim() === '') {
+      this.series = [...this.allSeries];
+      return;
+    }
+
+    this.series = this.allSeries.filter(serie =>
+      serie.titulo.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+
   }
 
 

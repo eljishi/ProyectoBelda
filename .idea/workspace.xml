@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fa625fd2-884d-4e58-94a2-8ead359c2357" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontendAngular/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontendAngular/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontendAngular/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontendAngular/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontendAngular/src/app/componentes/serie-busqueda/serie-busqueda.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontendAngular/src/app/componentes/serie-busqueda/serie-busqueda.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontendAngular/src/app/componentes/serie-busqueda/serie-busqueda.component.ts" beforeDir="false" />
+    <list default="true" id="fa625fd2-884d-4e58-94a2-8ead359c2357" name="Changes" comment="Cosas de nest">
       <change beforePath="$PROJECT_DIR$/FrontendAngular/src/app/componentes/series-list/series-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontendAngular/src/app/componentes/series-list/series-list.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontendAngular/src/app/componentes/series-list/series-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontendAngular/src/app/componentes/series-list/series-list.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontendAngular/src/app/componentes/series-modal/series-modal.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontendAngular/src/app/componentes/series-modal/series-modal.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FrontendAngular/src/app/componentes/series-modal/series-modal.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/FrontendAngular/src/app/componentes/series-modal/series-modal.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FrontendAngular/src/app/componentes/series-navbar/series-navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/FrontendAngular/src/app/componentes/series-navbar/series-navbar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend-nestjs/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend-nestjs/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend-nestjs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend-nestjs/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/series.json" beforeDir="false" afterPath="$PROJECT_DIR$/series.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FrontendIonic/src/app/pages/inicio/inicio.page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/FrontendIonic/src/app/pages/inicio/inicio.page.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +27,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -69,9 +61,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Emilio\\Desktop\\ProyectoBelda\\backend-nestjs\\node_modules\\prettier",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\eljis\\Desktop\\ProyectoBleda\\backend-nestjs\\node_modules\\prettier",
     "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "ts.external.directory.path": "C:\\Users\\Emilio\\Desktop\\ProyectoBelda\\backend-nestjs\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\eljis\\Desktop\\ProyectoBleda\\FrontendIonic\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -114,5 +106,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Arreglado errores conexion Belda" />
+    <MESSAGE value="Cosas de nest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cosas de nest" />
   </component>
 </project>

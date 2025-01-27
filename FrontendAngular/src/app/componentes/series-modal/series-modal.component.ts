@@ -2,44 +2,51 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { Serie } from "../../common/serie";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { SerieService } from "../../services/serie.service";
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-series-modal',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    FaIconComponent
+    FaIconComponent,
+    CommonModule
   ],
   templateUrl: './series-modal.component.html',
   styleUrls: ['./series-modal.component.css']
 })
 export class SeriesModalComponent implements OnInit {
-
   @Input() serie!: Serie;
-  @Input({ required: true }) editar!: boolean;
-  @Input({ required: true }) categoria!: string[];
+  @Input({ required: true }) editar: boolean = false;
+  @Input({ required: true }) categoria: string[] = [];
 
   activeModal: NgbActiveModal = inject(NgbActiveModal);
   private readonly seriesService: SerieService = inject(SerieService);
   private readonly formBuilder: FormBuilder = inject(FormBuilder);
   protected readonly faPlusCircle = faPlusCircle;
 
-  formSeries: FormGroup = this.formBuilder.group({
-    _id: [''],
-    titulo: [''],
-    categorias: [[]],
-    imagenes: [''],
-    capitulos: [''],
-    emision: [''],
-    sinopsis: [''],
-  });
+  formSeries: FormGroup;
+  anadirCategoria: FormGroup;
 
-  anadirCategoria: FormGroup = this.formBuilder.group({
-    nuevaCategoria: [''],
-  });
+  constructor() {
+    this.formSeries = this.formBuilder.group({
+      _id: [''],
+      titulo: [''],
+      categorias: [[]],
+      imagenes: [''],
+      capitulos: [''],
+      emision: [''],
+      sinopsis: [''],
+    });
+
+    this.anadirCategoria = this.formBuilder.group({
+      nuevaCategoria: [''],
+    });
+  }
+
 
   get titulo() { return this.formSeries.get('titulo'); }
   get categorias() { return this.formSeries.get('categorias'); }
@@ -51,41 +58,62 @@ export class SeriesModalComponent implements OnInit {
 
   ngOnInit() {
     if (this.editar && this.serie) {
-      this.formSeries.patchValue(this.serie);
-    } else {
-      this.formSeries.reset();
+      this.formSeries.patchValue({
+        _id: this.serie._id || '',
+        titulo: this.serie.titulo || '',
+        categorias: this.serie.categorias || [],
+        imagenes: this.serie.imagenes ? this.serie.imagenes[0] : '',
+        capitulos: this.serie.capitulos || '',
+        emision: this.serie.emision || '',
+        sinopsis: this.serie.sinopsis || ''
+      });
     }
   }
 
   anadirNuevaCategoria() {
-    const nuevaCategoria = this.nuevaCategoria?.value;
-    if (nuevaCategoria) {
-      const categorias = this.formSeries.get('categorias')?.value || [];
-      categorias.push(nuevaCategoria);
-      this.formSeries.get('categorias')?.setValue(categorias);
-      this.anadirCategoria.reset();
-    }
-  }
+    if (this.nuevaCategoria?.valid) {
+      const nuevaCategoria = this.nuevaCategoria.value.trim();
 
-  onSubmit() {
-    if (this.formSeries.valid) {
-      if (this.editar) {
-        this.seriesService.updateSerie(this.formSeries.getRawValue()).subscribe({
-          next: value => console.log(value),
-          complete: () => this.activeModal.dismiss(),
-          error: error => console.error(error),
-        });
-      } else {
-        this.seriesService.addSerie(this.formSeries.getRawValue()).subscribe({
-          next: value => console.log(value),
-          complete: () => this.activeModal.dismiss(),
-          error: error => console.error(error),
-        });
+      const categoriasActuales = this.formSeries.get('categorias')?.value || [];
+
+      if (!categoriasActuales.includes(nuevaCategoria) && nuevaCategoria) {
+        categoriasActuales.push(nuevaCategoria);
+        this.formSeries.get('categorias')?.setValue(categoriasActuales);
+        this.anadirCategoria.reset();
       }
     }
   }
 
-  reloadPage() {
-    location.reload();
+  eliminarCategoria(categoria: string) {
+    const categoriasActuales = this.formSeries.get('categorias')?.value || [];
+    const nuevasCategorias = categoriasActuales.filter((cat: string) => cat !== categoria);
+    this.formSeries.get('categorias')?.setValue(nuevasCategorias);
   }
+
+  onSubmit() {
+    if (this.formSeries.valid) {
+      const formValue = this.formSeries.getRawValue();
+      formValue.imagenes = formValue.imagenes ? [formValue.imagenes] : [];
+
+      if (this.editar) {
+        this.seriesService.updateSerie(formValue).subscribe({
+          next: value => {
+            console.log('Serie actualizada:', value);
+          },
+          error: error => {
+            console.error('Error al actualizar serie:', error);
+          },
+        });
+      } else {
+        this.seriesService.addSerie(formValue).subscribe({
+          next: value => {
+            console.log('Serie añadida:', value);
+          },
+          error: error => {
+            console.error('Error al añadir serie:', error);
+          },
+        });
+      }
+    }
+    }
 }
