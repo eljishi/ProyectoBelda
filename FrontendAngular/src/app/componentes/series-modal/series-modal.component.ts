@@ -6,6 +6,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { CommonModule } from '@angular/common';
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-series-modal',
@@ -13,7 +14,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     ReactiveFormsModule,
     FaIconComponent,
-    CommonModule
+    CommonModule,
+    RouterLink
   ],
   templateUrl: './series-modal.component.html',
   styleUrls: ['./series-modal.component.css']

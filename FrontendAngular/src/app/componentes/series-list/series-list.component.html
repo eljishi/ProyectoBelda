@@ -16,8 +16,25 @@
 
   <div class="container justify-content-center" >
     @for (serie of series; track serie._id){
+
       <div class="card" style="width: auto; margin: 10px; height: auto;" >
-        <img src="{{serie.imagenes[0]}}" class="card-img-top" style="height: auto; object-fit: cover;">
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            @for (imagen of serie.imagenes; track $index) {
+              <div class="carousel-item {{ $index == 0 ? 'active' : '' }}" data-bs-interval="10000">
+                <img src="{{imagen}}" class="d-block w-100" alt="...">
+              </div>
+            }
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
         <div class="card-body">
           <h5 class="card-title">{{serie.titulo}}</h5>
           <p class="card-text">{{serie.sinopsis}}</p>
