@@ -39,7 +39,7 @@ export class SeriesModalComponent implements OnInit {
       _id: [''],
       titulo: ['', Validators.required],
       categorias: [[]],
-      imagenes: [''],
+      imagenes: [[]],
       capitulos: ['', [Validators.required, Validators.min(1)]],
       emision: ['', Validators.required],
       sinopsis: ['', Validators.required],
@@ -58,6 +58,8 @@ export class SeriesModalComponent implements OnInit {
   get imagen() { return this.formSeries.get('imagenes'); }
   get nuevaCategoria() { return this.anadirCategoria.get('nuevaCategoria'); }
 
+
+  //Cambiar esto para que funcione
   ngOnInit() {
     if (this.editar && this.serie) {
       this.formSeries.patchValue({
