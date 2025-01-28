@@ -20,7 +20,7 @@ import {IonicModule} from "@ionic/angular";
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardContent, IonImg, IonCardTitle, IonChip, IonCardSubtitle, IonText]
+  imports: [IonContent,CommonModule, FormsModule, IonCard, IonCardContent, IonImg, IonCardTitle, IonChip, IonCardSubtitle, IonText]
 })
 export class InicioPage implements OnInit {
   private readonly seriesService:SeriesService=inject(SeriesService)

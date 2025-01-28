@@ -11,7 +11,7 @@ import {hammer, homeOutline, listOutline, paw, searchOutline} from "ionicons/ico
   templateUrl: './tabs.page.html',
   styleUrls: ['./tabs.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonicModule]
+  imports: [ CommonModule, FormsModule, IonicModule]
 })
 export class TabsPage implements OnInit {
 

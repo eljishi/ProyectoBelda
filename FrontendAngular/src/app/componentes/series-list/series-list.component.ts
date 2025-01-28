@@ -108,12 +108,15 @@ constructor() {
   }
 
   editarSerie(serie: Serie) {
-    const modalRef= this.modalService.open(SeriesModalComponent)
-    modalRef.componentInstance.serie=serie;
-    modalRef.componentInstance.editar=true;
-    modalRef.componentInstance.categorias=this.categorias;
-    modalRef.result.then(()=>{this.loadSeries()})
-      .catch(err=>{this.loadSeries()})
+    const modalRef = this.modalService.open(SeriesModalComponent);
+    modalRef.componentInstance.serie = {...serie, categorias: [...serie.categorias]};
+    modalRef.componentInstance.editar = true;
+    modalRef.componentInstance.categoria = this.categorias;
+
+    modalRef.result.then(
+      () => { this.loadSeries(); },
+      (err) => { this.loadSeries(); }
+    );
   }
 
 

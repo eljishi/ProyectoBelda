@@ -1,20 +1,61 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, CUSTOM_ELEMENTS_SCHEMA, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import {
+  IonCard,
+  IonCardContent, IonCardSubtitle, IonCardTitle, IonChip,
+  IonContent,
+  IonHeader, IonImg,
+  IonInput,
+  IonSearchbar, IonText,
+  IonTitle,
+  IonToolbar
+} from '@ionic/angular/standalone';
+import {Serie} from "../../common/interface";
+import {SeriesService} from "../../service/series.service";
 
 @Component({
   selector: 'app-busqueda',
   templateUrl: './busqueda.page.html',
   styleUrls: ['./busqueda.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonSearchbar, IonCard, IonCardContent, IonCardSubtitle, IonCardTitle, IonChip, IonImg, IonText],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class BusquedaPage implements OnInit {
+  private readonly seriesService:SeriesService=inject(SeriesService)
+  series:Serie[]=[];
+  serieBuscada: Serie[]=[];
 
   constructor() { }
 
   ngOnInit() {
+    this.loadSeries();
   }
+
+  private loadSeries() {
+    this.seriesService.getSeries().subscribe({
+        next: value => {
+          this.series = value.data;
+        }
+      }
+    )
+  }
+
+  onSearch(event: CustomEvent) {
+    const searchTerm = event.detail.value?.toLowerCase() || '';
+
+    if (!searchTerm) {
+      // Si el término de búsqueda está vacío, limpiamos los resultados
+      this.serieBuscada = [];
+      return;
+    }
+
+    // Filtrar las series que coincidan con el término de búsqueda
+    this.serieBuscada = this.series.filter(serie =>
+      serie.titulo.toLowerCase().includes(searchTerm)
+    );
+  }
+
 
 }

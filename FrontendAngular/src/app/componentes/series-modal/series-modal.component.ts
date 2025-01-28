@@ -33,13 +33,14 @@ export class SeriesModalComponent implements OnInit {
 
   formSeries: FormGroup;
   anadirCategoria: FormGroup;
+  listaCategorias: string[] = [];
 
   constructor() {
     this.formSeries = this.formBuilder.group({
       _id: [''],
       titulo: ['', Validators.required],
       categorias: [[]],
-      imagenes: [[]],
+      imagenes: [''],
       capitulos: ['', [Validators.required, Validators.min(1)]],
       emision: ['', Validators.required],
       sinopsis: ['', Validators.required],
@@ -58,30 +59,32 @@ export class SeriesModalComponent implements OnInit {
   get imagen() { return this.formSeries.get('imagenes'); }
   get nuevaCategoria() { return this.anadirCategoria.get('nuevaCategoria'); }
 
-
-  //Cambiar esto para que funcione
   ngOnInit() {
     if (this.editar && this.serie) {
+      const imagenURL = this.serie.imagenes && this.serie.imagenes.length > 0
+        ? this.serie.imagenes[0]
+        : '';
+
+      this.listaCategorias = this.serie.categorias || [];
+
       this.formSeries.patchValue({
-        _id: this.serie._id || '',
-        titulo: this.serie.titulo || '',
-        categorias: this.serie.categorias || [],
-        imagenes: this.serie.imagenes ? this.serie.imagenes[0] : '',
-        capitulos: this.serie.capitulos || '',
-        emision: this.serie.emision || '',
-        sinopsis: this.serie.sinopsis || ''
+        _id: this.serie._id,
+        titulo: this.serie.titulo,
+        categorias: this.listaCategorias,
+        imagenes: imagenURL,
+        capitulos: this.serie.capitulos,
+        emision: this.serie.emision,
+        sinopsis: this.serie.sinopsis
       });
     }
   }
 
   anadirNuevaCategoria() {
-    if (this.nuevaCategoria?.valid) {
-      const nuevaCategoria = this.nuevaCategoria.value.trim();
-      const categoriasActuales = this.categorias?.value || [];
-
-      if (!categoriasActuales.includes(nuevaCategoria) && nuevaCategoria) {
-        categoriasActuales.push(nuevaCategoria);
-        this.formSeries.patchValue({ categorias: categoriasActuales });
+    if (this.nuevaCategoria?.valid && this.nuevaCategoria.value) {
+      const nuevaCat = this.nuevaCategoria.value.trim();
+      if (nuevaCat && !this.listaCategorias.includes(nuevaCat)) {
+        this.listaCategorias = [...this.listaCategorias, nuevaCat];
+        this.formSeries.patchValue({ categorias: this.listaCategorias });
         this.anadirCategoria.reset();
 
         if (this.editar) {
@@ -92,9 +95,8 @@ export class SeriesModalComponent implements OnInit {
   }
 
   eliminarCategoria(categoria: string) {
-    const categoriasActuales = this.categorias?.value || [];
-    const nuevasCategorias = categoriasActuales.filter((cat: string) => cat !== categoria);
-    this.formSeries.patchValue({ categorias: nuevasCategorias });
+    this.listaCategorias = this.listaCategorias.filter(cat => cat !== categoria);
+    this.formSeries.patchValue({ categorias: this.listaCategorias });
 
     if (this.editar) {
       this.guardarCambios();
@@ -103,8 +105,9 @@ export class SeriesModalComponent implements OnInit {
 
   private guardarCambios() {
     if (this.formSeries.valid) {
-      const formValue = this.formSeries.getRawValue();
+      const formValue = {...this.formSeries.getRawValue()};
       formValue.imagenes = formValue.imagenes ? [formValue.imagenes] : [];
+      formValue.categorias = this.listaCategorias;
 
       this.seriesService.updateSerie(formValue).subscribe({
         next: value => {
@@ -119,8 +122,9 @@ export class SeriesModalComponent implements OnInit {
 
   onSubmit() {
     if (this.formSeries.valid) {
-      const formValue = this.formSeries.getRawValue();
+      const formValue = {...this.formSeries.getRawValue()};
       formValue.imagenes = formValue.imagenes ? [formValue.imagenes] : [];
+      formValue.categorias = this.listaCategorias;
 
       if (this.editar) {
         this.seriesService.updateSerie(formValue).subscribe({

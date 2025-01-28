@@ -1,13 +1,56 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>busqueda</ion-title>
+    <ion-title>Barra de Búsqueda</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">busqueda</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <div>
+  <ion-searchbar
+    class="ion-searchbar"
+    style="border-width: 100px"
+    placeholder="Busca una serie"
+    (ionInput)="onSearch($event)">
+  </ion-searchbar>
+  </div>
+
+  @for (serie of serieBuscada;track $index){
+
+    <ion-card style="border-radius: 5%">
+      <ion-card-content>
+        <swiper-container pagination="true">
+          @for(imagen of serie.imagenes;track $index){
+            <swiper-slide>
+              <ion-img [src]="imagen" [alt]="serie.titulo"></ion-img>
+            </swiper-slide>
+          }
+        </swiper-container>
+      </ion-card-content>
+
+      <ion-card-content>
+        <ion-card-title>{{serie.titulo}}</ion-card-title>
+      </ion-card-content>
+
+      <div class="categories">
+        @for(categoria of serie.categorias;track $index){
+          <ion-chip>
+            {{categoria }}
+          </ion-chip>
+        }
+      </div>
+
+      <ion-card-content>
+        <ion-card-subtitle>{{serie.sinopsis}}</ion-card-subtitle>
+      </ion-card-content>
+
+      <ion-card-content>
+        <ion-text>Capitulos: {{serie.capitulos}}</ion-text>
+        <ion-text style="padding-left: 20px">Fecha emision: {{serie.emision}}</ion-text>
+      </ion-card-content>
+
+    </ion-card>
+  }
 </ion-content>
+
+
+
