@@ -1,12 +1,12 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { Serie } from "../../common/serie";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbActiveModal, NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { SerieService } from "../../services/serie.service";
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { CommonModule } from '@angular/common';
-import {RouterLink} from "@angular/router";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-series-modal',
@@ -15,7 +15,8 @@ import {RouterLink} from "@angular/router";
     ReactiveFormsModule,
     FaIconComponent,
     CommonModule,
-    RouterLink
+    RouterLink,
+    NgbModule
   ],
   templateUrl: './series-modal.component.html',
   styleUrls: ['./series-modal.component.css']
@@ -36,19 +37,18 @@ export class SeriesModalComponent implements OnInit {
   constructor() {
     this.formSeries = this.formBuilder.group({
       _id: [''],
-      titulo: [''],
+      titulo: ['', Validators.required],
       categorias: [[]],
       imagenes: [''],
-      capitulos: [''],
-      emision: [''],
-      sinopsis: [''],
+      capitulos: ['', [Validators.required, Validators.min(1)]],
+      emision: ['', Validators.required],
+      sinopsis: ['', Validators.required],
     });
 
     this.anadirCategoria = this.formBuilder.group({
-      nuevaCategoria: [''],
+      nuevaCategoria: ['', Validators.required],
     });
   }
-
 
   get titulo() { return this.formSeries.get('titulo'); }
   get categorias() { return this.formSeries.get('categorias'); }
@@ -75,21 +75,44 @@ export class SeriesModalComponent implements OnInit {
   anadirNuevaCategoria() {
     if (this.nuevaCategoria?.valid) {
       const nuevaCategoria = this.nuevaCategoria.value.trim();
-
-      const categoriasActuales = this.formSeries.get('categorias')?.value || [];
+      const categoriasActuales = this.categorias?.value || [];
 
       if (!categoriasActuales.includes(nuevaCategoria) && nuevaCategoria) {
         categoriasActuales.push(nuevaCategoria);
-        this.formSeries.get('categorias')?.setValue(categoriasActuales);
+        this.formSeries.patchValue({ categorias: categoriasActuales });
         this.anadirCategoria.reset();
+
+        if (this.editar) {
+          this.guardarCambios();
+        }
       }
     }
   }
 
   eliminarCategoria(categoria: string) {
-    const categoriasActuales = this.formSeries.get('categorias')?.value || [];
+    const categoriasActuales = this.categorias?.value || [];
     const nuevasCategorias = categoriasActuales.filter((cat: string) => cat !== categoria);
-    this.formSeries.get('categorias')?.setValue(nuevasCategorias);
+    this.formSeries.patchValue({ categorias: nuevasCategorias });
+
+    if (this.editar) {
+      this.guardarCambios();
+    }
+  }
+
+  private guardarCambios() {
+    if (this.formSeries.valid) {
+      const formValue = this.formSeries.getRawValue();
+      formValue.imagenes = formValue.imagenes ? [formValue.imagenes] : [];
+
+      this.seriesService.updateSerie(formValue).subscribe({
+        next: value => {
+          console.log('Serie actualizada:', value);
+        },
+        error: error => {
+          console.error('Error al actualizar serie:', error);
+        }
+      });
+    }
   }
 
   onSubmit() {
@@ -101,6 +124,7 @@ export class SeriesModalComponent implements OnInit {
         this.seriesService.updateSerie(formValue).subscribe({
           next: value => {
             console.log('Serie actualizada:', value);
+            this.activeModal.close(value);
           },
           error: error => {
             console.error('Error al actualizar serie:', error);
@@ -110,6 +134,7 @@ export class SeriesModalComponent implements OnInit {
         this.seriesService.addSerie(formValue).subscribe({
           next: value => {
             console.log('Serie añadida:', value);
+            this.activeModal.close(value);
           },
           error: error => {
             console.error('Error al añadir serie:', error);
@@ -117,5 +142,5 @@ export class SeriesModalComponent implements OnInit {
         });
       }
     }
-    }
+  }
 }

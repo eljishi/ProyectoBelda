@@ -11,14 +11,32 @@
         <div class="row">
           <div class="col-md-8">
             <div class="form-floating mb-3">
-              <input formControlName="titulo" type="text" class="form-control" id="titulo" placeholder="Titulo">
+              <input formControlName="titulo" type="text" class="form-control"
+                     [class.is-invalid]="titulo?.invalid && (titulo?.dirty)"
+                     id="titulo" placeholder="Titulo">
               <label for="titulo">Título</label>
+              @if (titulo?.invalid && (titulo?.dirty)) {
+                <div class="invalid-feedback">
+                  @if (titulo?.errors?.['required']) {
+                    <div>El título es requerido</div>
+                  }
+                </div>
+              }
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-floating mb-3">
-              <input formControlName="emision" type="text" class="form-control" id="emision" placeholder="Fecha emision">
+              <input formControlName="emision" type="text" class="form-control"
+                     [class.is-invalid]="emision?.invalid && (emision?.dirty)"
+                     id="emision" placeholder="Fecha emision">
               <label for="emision">Fecha emisión</label>
+              @if (emision?.invalid && (emision?.dirty)) {
+                <div class="invalid-feedback">
+                  @if (emision?.errors?.['required']) {
+                    <div>La fecha de emisión es requerida</div>
+                  }
+                </div>
+              }
             </div>
           </div>
         </div>
@@ -26,8 +44,20 @@
         <div class="row">
           <div class="col-md-4">
             <div class="form-floating mb-3">
-              <input formControlName="capitulos" type="number" class="form-control" id="capitulos" placeholder="Episodios">
+              <input formControlName="capitulos" type="number" class="form-control"
+                     [class.is-invalid]="capitulos?.invalid && (capitulos?.dirty )"
+                     id="capitulos" placeholder="Episodios">
               <label for="capitulos">Episodios</label>
+              @if (capitulos?.invalid && (capitulos?.dirty)) {
+                <div class="invalid-feedback">
+                  @if (capitulos?.errors?.['required']) {
+                    <div>El número de episodios es requerido</div>
+                  }
+                  @if (capitulos?.errors?.['min']) {
+                    <div>El número de episodios debe ser mayor que 0</div>
+                  }
+                </div>
+              }
             </div>
           </div>
           <div class="col-md-8">
@@ -42,28 +72,41 @@
           <div class="col-md-4">
             <img [src]="imagen?.value" class="img-fluid rounded" alt="Serie Image">
           </div>
+
           <div class="col-md-8">
             <div class="form-floating">
-              <textarea formControlName="sinopsis" rows="4" class="form-control" id="sinopsis" placeholder="Sinopsis"></textarea>
+              <textarea formControlName="sinopsis" rows="4" class="form-control"
+                        [class.is-invalid]="sinopsis?.invalid && (sinopsis?.dirty)"
+                        id="sinopsis" placeholder="Sinopsis"></textarea>
               <label for="sinopsis">Sinopsis</label>
+              @if (sinopsis?.invalid && (sinopsis?.dirty)) {
+                <div class="invalid-feedback">
+                  @if (sinopsis?.errors?.['required']) {
+                    <div>La sinopsis es requerida</div>
+                  }
+                </div>
+              }
             </div>
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-8">
-
-
             <div class="mt-2">
               @for (categoria of categorias?.value; track $index) {
-                <span class="badge bg-primary me-2 mb-2">{{ categoria }}</span>
+                <span class="badge bg-primary me-2 mb-2" style="cursor: pointer" (click)="eliminarCategoria(categoria)">
+                  {{ categoria }} ×
+                </span>
               }
             </div>
           </div>
           <div class="col-md-4">
             <form [formGroup]="anadirCategoria" class="d-flex">
-              <div class="form-floating flex-grow-1 me-2" >
-                <input style="width: auto" type="text"  class="form-control" id="nuevaCategoria" formControlName="nuevaCategoria" placeholder="Nueva categoria">
+              <div class="form-floating flex-grow-1 me-2">
+                <input style="width: auto" type="text" class="form-control"
+                       id="nuevaCategoria" formControlName="nuevaCategoria"
+                       placeholder="Nueva categoria">
+                <label for="nuevaCategoria">Nueva categoría</label>
               </div>
               <button
                 type="button"
@@ -85,7 +128,6 @@
         (click)="onSubmit()"
         [disabled]="formSeries.invalid">
         Guardar
-
       </button>
     </div>
   </div>
