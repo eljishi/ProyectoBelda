@@ -1,6 +1,6 @@
 
 <ion-content>
-  @for (serie of miArray;track $index){
+  @for (serie of miArrayInf;track $index){
 
    <ion-card style="border-radius: 5%">
      <ion-card-content>
@@ -30,6 +30,14 @@
 
    </ion-card>
 
+
   }
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Cargando más series...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 
 </ion-content>

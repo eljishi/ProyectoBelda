@@ -46,12 +46,9 @@ export class BusquedaPage implements OnInit {
     const searchTerm = event.detail.value?.toLowerCase() || '';
 
     if (!searchTerm) {
-      // Si el término de búsqueda está vacío, limpiamos los resultados
       this.serieBuscada = [];
       return;
     }
-
-    // Filtrar las series que coincidan con el término de búsqueda
     this.serieBuscada = this.series.filter(serie =>
       serie.titulo.toLowerCase().includes(searchTerm)
     );
