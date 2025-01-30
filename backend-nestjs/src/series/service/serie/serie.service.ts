@@ -43,7 +43,7 @@ export class SerieService {
     }
 
     async getCategorias():Promise<string[]>{
-        return this.serieModel.find().distinct('categoria')
+        return this.serieModel.find().distinct('categorias')
     }
 
     getSerieByTitleOrSynopsis(searchTerm: string): Promise<any[]> {

@@ -59,6 +59,6 @@ export class InicioPage implements OnInit {
           event.target.disabled = true;
         }
       }
-    }, 5000);
+    }, 2000);
   }
 }

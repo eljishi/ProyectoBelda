@@ -1,7 +1,13 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ApiResponseMessage, ApiResponseSerie, ApiResponseSeries, Serie} from "../common/interface";
+import {
+  ApiResponseMessage,
+  ApiResponseSerie,
+  ApiResponseSerieCategorias,
+  ApiResponseSeries,
+  Serie
+} from "../common/interface";
 import {environment} from "../../environments/environment";
 
 @Injectable({
@@ -13,6 +19,10 @@ export class SeriesService {
   getSeries():Observable<ApiResponseSeries>{
     return this.httpClient.get<ApiResponseSeries>(environment.urlBase)
   }
+  getCategorias():Observable<ApiResponseSerieCategorias> {
+    return this.httpClient.get<ApiResponseSerieCategorias>((environment.urlBase+'/categorias'));
+  }
+
 
   constructor() { }
 }

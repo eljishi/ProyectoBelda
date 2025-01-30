@@ -6,7 +6,6 @@ import {
   IonCardContent, IonCardSubtitle, IonCardTitle, IonChip,
   IonContent,
   IonHeader, IonImg,
-  IonInput,
   IonSearchbar, IonText,
   IonTitle,
   IonToolbar

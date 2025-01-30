@@ -1,31 +1,22 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>categorias</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-cabecera></app-cabecera>
 
 <ion-content>
-  <div class="container">
-    <ion-button fill="clear">
-      <ion-avatar >
-        <ion-img src="./assets/Iconos/AkumaNoMi.jpg"></ion-img>
-      </ion-avatar>
-    </ion-button>
-
-    <ion-button fill="clear">
-      <ion-avatar>
-        <ion-img src="./assets/Iconos/MarkValencia.jpg"></ion-img>
-      </ion-avatar>
-    </ion-button>
-
-    <ion-button fill="clear">
-      <ion-avatar>
-        <ion-img src="./assets/Iconos/OpeOpeNoMi.jpg"></ion-img>
-      </ion-avatar>
-    </ion-button>
+  <div>
+    <ion-col>
+      <ion-row>
+        <swiper-container
+          [slidesPerView]="3"
+          [spaceBetween]="5"
+          class="grid-container">
+          @for (cat of categorias;track $index){
+            <swiper-slide class="grid-item">
+              <ion-chip>{{cat}}</ion-chip>
+            </swiper-slide>
+          }
+        </swiper-container>
+      </ion-row>
+    </ion-col>
   </div>
 
-  <div class="container2">
 
-  </div>
 </ion-content>

@@ -139,6 +139,7 @@ export class SeriesController {
     async getCategorias() {
         try {
             const categorias = await this.serieService.getCategorias();
+            console.log(categorias)
             return {
                 status: 'ok',
                 data: categorias
