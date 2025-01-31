@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -7,28 +7,32 @@ import {
   IonButtons,
   IonContent,
   IonHeader, IonIcon,
-  IonImg, IonTabButton,
+  IonImg, IonMenuToggle, IonTabButton,
   IonTitle,
   IonToolbar
 } from '@ionic/angular/standalone';
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {addIcons} from "ionicons";
-import {ellipsisVerticalOutline} from "ionicons/icons";
+import {arrowBackOutline, ellipsisVerticalOutline} from "ionicons/icons";
 
 @Component({
   selector: 'app-cabecera',
   templateUrl: './cabecera.page.html',
   styleUrls: ['./cabecera.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonAvatar, IonImg, RouterLink, IonButtons, IonBackButton, IonIcon, IonTabButton]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonAvatar, IonImg, RouterLink, IonButtons, IonIcon, IonTabButton, IonBackButton, IonMenuToggle]
 })
 export class CabeceraPage implements OnInit {
+  private readonly router: Router = inject(Router);
 
   constructor() {
-    addIcons({ellipsisVerticalOutline})
+    addIcons({ellipsisVerticalOutline,arrowBackOutline})
   }
 
   ngOnInit() {
   }
 
+  backButton() {
+    this.router.navigateByUrl(this.router.lastSuccessfulNavigation?.previousNavigation?.extractedUrl.toString() as string)
+  }
 }

@@ -12,13 +12,14 @@ import {
 } from '@ionic/angular/standalone';
 import {Serie} from "../../common/interface";
 import {SeriesService} from "../../service/series.service";
+import {CabeceraPage} from "../cabecera/cabecera.page";
 
 @Component({
   selector: 'app-busqueda',
   templateUrl: './busqueda.page.html',
   styleUrls: ['./busqueda.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonSearchbar, IonCard, IonCardContent, IonCardSubtitle, IonCardTitle, IonChip, IonImg, IonText],
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonSearchbar, IonCard, IonCardContent, IonCardSubtitle, IonCardTitle, IonChip, IonImg, IonText, CabeceraPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class BusquedaPage implements OnInit {

@@ -14,13 +14,14 @@ import {
 import {SeriesService} from "../../service/series.service";
 import {ApiResponseSeries, Serie} from "../../common/interface";
 import {InfiniteScrollCustomEvent, IonicModule} from "@ionic/angular";
+import {CabeceraPage} from "../cabecera/cabecera.page";
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule, IonCard, IonCardContent, IonImg, IonCardTitle, IonChip, IonCardSubtitle, IonText, IonInfiniteScroll, IonInfiniteScrollContent]
+  imports: [IonContent, CommonModule, FormsModule, IonCard, IonCardContent, IonImg, IonCardTitle, IonChip, IonCardSubtitle, IonText, IonInfiniteScroll, IonInfiniteScrollContent, CabeceraPage]
 })
 export class InicioPage implements OnInit {
   private readonly seriesService: SeriesService = inject(SeriesService)

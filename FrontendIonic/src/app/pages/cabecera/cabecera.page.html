@@ -1,24 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <div class="container">
 
-      <ion-buttons>
-        <ion-back-button  defaultHref="/">
+      <ion-buttons slot="start">
+        <ion-button (click)="backButton()">
           <ion-icon name="arrow-back-outline"></ion-icon>
-        </ion-back-button>
+        </ion-button>
       </ion-buttons>
 
-      <ion-button fill="blank" routerLink="/">
+      <ion-button fill="clear" routerLink="/" class="center-avatar">
         <ion-avatar>
           <ion-img src="./assets/Iconos/MarkValencia.jpg"></ion-img>
         </ion-avatar>
       </ion-button>
 
-      <ion-tab-button>
-        <ion-icon name="ellipsis-vertical-outline"></ion-icon>
-      </ion-tab-button>
+    <ion-buttons slot="end" id="menu">
+      <ion-menu-toggle>
+        <ion-button>
+          <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
 
-    </div>
+
   </ion-toolbar>
 </ion-header>
+
 

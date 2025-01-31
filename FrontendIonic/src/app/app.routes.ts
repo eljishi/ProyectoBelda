@@ -29,9 +29,5 @@ export const routes: Routes = [
       },
     ]
   },
-  {
-    path: 'cabecera',
-    loadComponent: () => import('./pages/cabecera/cabecera.page').then( m => m.CabeceraPage)
-  },
 ];
 

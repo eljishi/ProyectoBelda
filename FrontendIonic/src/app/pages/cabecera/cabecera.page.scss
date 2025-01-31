@@ -1,4 +1,13 @@
-.container{
+.container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.center-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
 }
