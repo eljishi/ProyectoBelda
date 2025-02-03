@@ -20,7 +20,7 @@ import {arrowBackOutline, ellipsisVerticalOutline} from "ionicons/icons";
   templateUrl: './cabecera.page.html',
   styleUrls: ['./cabecera.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonAvatar, IonImg, RouterLink, IonButtons, IonIcon, IonTabButton, IonBackButton, IonMenuToggle]
+  imports: [ IonHeader, IonToolbar, CommonModule, FormsModule, IonButton, IonAvatar, IonImg, RouterLink, IonButtons, IonIcon, IonMenuToggle]
 })
 export class CabeceraPage implements OnInit {
   private readonly router: Router = inject(Router);

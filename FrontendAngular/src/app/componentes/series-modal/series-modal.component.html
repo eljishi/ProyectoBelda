@@ -62,18 +62,31 @@
           </div>
           <div class="col-md-8">
             <div class="form-floating mb-3">
-              <input formControlName="imagenes" type="text" class="form-control" id="imagenes" placeholder="URL de imagen">
-              <label for="imagenes">URL de imagen</label>
+              <input #imageInput type="text" class="form-control" id="imagenes" placeholder="URL de imagen">
+              <label for="imagenes">Nueva URL de imagen</label>
+            </div>
+            <button type="button" class="btn btn-success mb-3" (click)="agregarImagen(imageInput.value); imageInput.value=''">
+              <fa-icon [icon]="faPlusCircle"></fa-icon> Añadir imagen
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-12">
+            <div class="d-flex flex-wrap gap-2">
+              @for (imagen of imagenesList; track $index) {
+                <div class="position-relative" style="width: 150px;">
+                  <img [src]="imagen" class="img-fluid rounded" [alt]="'Imagen ' + ($index + 1)">
+                  <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0"
+                          (click)="eliminarImagen($index)">×</button>
+                </div>
+              }
             </div>
           </div>
         </div>
 
         <div class="row mb-3">
-          <div class="col-md-4">
-            <img [src]="imagen?.value" class="img-fluid rounded" alt="Serie Image">
-          </div>
-
-          <div class="col-md-8">
+          <div class="col-12">
             <div class="form-floating">
               <textarea formControlName="sinopsis" rows="4" class="form-control"
                         [class.is-invalid]="sinopsis?.invalid && (sinopsis?.dirty)"

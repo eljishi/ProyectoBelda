@@ -20,7 +20,10 @@ export class SeriesService {
     return this.httpClient.get<ApiResponseSeries>(environment.urlBase)
   }
   getCategorias():Observable<ApiResponseSerieCategorias> {
-    return this.httpClient.get<ApiResponseSerieCategorias>((environment.urlBase+'/categorias'));
+    return this.httpClient.get<ApiResponseSerieCategorias>((environment.urlBase+'categorias'));
+  }
+  getSerie(id:string):Observable<ApiResponseSerie>{
+    return this.httpClient.get<ApiResponseSerie>(environment.urlBase+id)
   }
 
 

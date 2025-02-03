@@ -1,0 +1,64 @@
+
+<ion-content [fullscreen]="true">
+  @defer (when serie){
+    <ion-card style="border-radius: 5%">
+
+      <ion-card-content>
+        <swiper-container pagination="true">
+          @for (imagen of serie.data.imagenes; track $index) {
+            <swiper-slide>
+              <ion-img [src]="imagen" [alt]="serie.data.titulo"></ion-img>
+            </swiper-slide>
+          }
+        </swiper-container>
+
+        <ion-card-title>{{ serie.data.titulo }}</ion-card-title>
+      </ion-card-content>
+
+      <div class="categories">
+        @for(categoria of serie.data.categorias;track $index){
+          <ion-chip>
+            {{categoria }}
+          </ion-chip>
+        }
+      </div>
+
+      <ion-card-content>
+        <ion-card-subtitle>{{serie.data.sinopsis}}</ion-card-subtitle>
+      </ion-card-content>
+
+      <ion-card-content>
+        <ion-text>Capitulos: {{serie.data.capitulos}}</ion-text>
+        <ion-text style="padding-left: 20px">Fecha emision: {{serie.data.emision}}</ion-text>
+      </ion-card-content>
+
+    </ion-card>
+  }
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="tertiary">
+      <ion-icon name="Add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button [href]="'https://www.facebook.com/'" color="light">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button [href]="'https://www.instagram.com/'" color="light">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button [href]="'https://www.youtube.com/'" color="light">
+        <ion-icon name="logo-youtube"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+    <ion-fab-list side="start">
+      <ion-fab-button [href]="'https://x.com/'" color="light">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button [href]="'https://github.com/'" color="light">
+        <ion-icon name="logo-github"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button [href]="'https://tiktok.com/'" color="light">
+        <ion-icon name="logo-tiktok"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

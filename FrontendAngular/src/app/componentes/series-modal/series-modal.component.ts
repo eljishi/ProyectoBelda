@@ -15,7 +15,6 @@ import { RouterLink } from "@angular/router";
     ReactiveFormsModule,
     FaIconComponent,
     CommonModule,
-    RouterLink,
     NgbModule
   ],
   templateUrl: './series-modal.component.html',
@@ -24,7 +23,7 @@ import { RouterLink } from "@angular/router";
 export class SeriesModalComponent implements OnInit {
   @Input() serie!: Serie;
   @Input({ required: true }) editar: boolean = false;
-  @Input({ required: true }) categoria: string[] = [];
+  @Input({ required: true }) categorias: string[] = [];
 
   activeModal: NgbActiveModal = inject(NgbActiveModal);
   private readonly seriesService: SerieService = inject(SerieService);
@@ -34,13 +33,13 @@ export class SeriesModalComponent implements OnInit {
   formSeries: FormGroup;
   anadirCategoria: FormGroup;
   listaCategorias: string[] = [];
+  imagenesList: string[] = [];
 
   constructor() {
     this.formSeries = this.formBuilder.group({
-      _id: [''],
       titulo: ['', Validators.required],
       categorias: [[]],
-      imagenes: [''],
+      imagenes: [[]],
       capitulos: ['', [Validators.required, Validators.min(1)]],
       emision: ['', Validators.required],
       sinopsis: ['', Validators.required],
@@ -52,31 +51,38 @@ export class SeriesModalComponent implements OnInit {
   }
 
   get titulo() { return this.formSeries.get('titulo'); }
-  get categorias() { return this.formSeries.get('categorias'); }
   get capitulos() { return this.formSeries.get('capitulos'); }
   get emision() { return this.formSeries.get('emision'); }
   get sinopsis() { return this.formSeries.get('sinopsis'); }
-  get imagen() { return this.formSeries.get('imagenes'); }
   get nuevaCategoria() { return this.anadirCategoria.get('nuevaCategoria'); }
 
   ngOnInit() {
     if (this.editar && this.serie) {
-      const imagenURL = this.serie.imagenes && this.serie.imagenes.length > 0
-        ? this.serie.imagenes[0]
-        : '';
-
+      this.imagenesList = this.serie.imagenes || [];
       this.listaCategorias = this.serie.categorias || [];
 
       this.formSeries.patchValue({
         _id: this.serie._id,
         titulo: this.serie.titulo,
         categorias: this.listaCategorias,
-        imagenes: imagenURL,
+        imagenes: this.serie.imagenes,
         capitulos: this.serie.capitulos,
         emision: this.serie.emision,
         sinopsis: this.serie.sinopsis
       });
     }
+  }
+
+  agregarImagen(url: string) {
+    if (url && url.trim()) {
+      this.imagenesList = [...this.imagenesList, url.trim()];
+      this.formSeries.patchValue({ imagenes: this.imagenesList });
+    }
+  }
+
+  eliminarImagen(index: number) {
+    this.imagenesList = this.imagenesList.filter((_, i) => i !== index);
+    this.formSeries.patchValue({ imagenes: this.imagenesList });
   }
 
   anadirNuevaCategoria() {
@@ -106,8 +112,8 @@ export class SeriesModalComponent implements OnInit {
   private guardarCambios() {
     if (this.formSeries.valid) {
       const formValue = {...this.formSeries.getRawValue()};
-      formValue.imagenes = formValue.imagenes ? [formValue.imagenes] : [];
       formValue.categorias = this.listaCategorias;
+      formValue.imagenes = this.imagenesList;
 
       this.seriesService.updateSerie(formValue).subscribe({
         next: value => {
@@ -123,8 +129,8 @@ export class SeriesModalComponent implements OnInit {
   onSubmit() {
     if (this.formSeries.valid) {
       const formValue = {...this.formSeries.getRawValue()};
-      formValue.imagenes = formValue.imagenes ? [formValue.imagenes] : [];
       formValue.categorias = this.listaCategorias;
+      formValue.imagenes = this.imagenesList;
 
       if (this.editar) {
         this.seriesService.updateSerie(formValue).subscribe({
@@ -137,13 +143,17 @@ export class SeriesModalComponent implements OnInit {
           },
         });
       } else {
-        this.seriesService.addSerie(formValue).subscribe({
+        const { _id, ...serieData } = formValue;
+        this.seriesService.addSerie(serieData).subscribe({
           next: value => {
             console.log('Serie añadida:', value);
             this.activeModal.close(value);
           },
           error: error => {
             console.error('Error al añadir serie:', error);
+            if (error.error) {
+              console.error('Detalles del error:', error.error);
+            }
           },
         });
       }

@@ -2,7 +2,7 @@
 <ion-content>
   @for (serie of miArrayInf;track $index){
 
-   <ion-card style="border-radius: 5%">
+   <ion-card style="border-radius: 5%" [routerLink]="'/detalles/' + serie.id">
      <ion-card-content>
        <ion-img [src]="serie.imagenes[0]"></ion-img>
      </ion-card-content>
@@ -32,6 +32,13 @@
 
 
   }
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/tabs/busqueda" color="tertiary">
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <ion-infinite-scroll (ionInfinite)="loadMore($event)">
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"

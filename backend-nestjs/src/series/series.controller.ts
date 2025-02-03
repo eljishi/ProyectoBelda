@@ -46,7 +46,7 @@ export class SeriesController {
     @Get('serie/:id')
     async getSerie(@Param('id')id:string){
         try {
-            const series=await this.serieService.getSeries();
+            const series=await this.serieService.getSerie(id);
             if (series){
                 return{
                     status:'ok',

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import {
   IonAvatar,
   IonButton, IonChip, IonCol,
-  IonContent,
+  IonContent, IonFab, IonFabButton,
   IonHeader,
   IonIcon,
   IonImg, IonRow,
@@ -14,13 +14,14 @@ import {
 import {SeriesService} from "../../service/series.service";
 import {Serie} from "../../common/interface";
 import {CabeceraPage} from "../cabecera/cabecera.page";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-categorias',
   templateUrl: './categorias.page.html',
   styleUrls: ['./categorias.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonIcon, IonImg, IonButton, IonAvatar, IonChip, IonCol, IonRow, CabeceraPage],
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonIcon, IonImg, IonButton, IonAvatar, IonChip, IonCol, IonRow, CabeceraPage, IonFab, IonFabButton, RouterLink],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CategoriasPage implements OnInit {
