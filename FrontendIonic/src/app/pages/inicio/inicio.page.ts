@@ -5,15 +5,13 @@ import {
   IonCard,
   IonCardContent, IonCardSubtitle,
   IonCardTitle, IonChip,
-  IonContent, IonFab, IonFabButton,
-  IonHeader, IonIcon,
+  IonContent, IonFab, IonFabButton, IonIcon,
   IonImg, IonInfiniteScroll, IonInfiniteScrollContent, IonText,
-  IonTitle,
-  IonToolbar
+
 } from '@ionic/angular/standalone';
 import {SeriesService} from "../../service/series.service";
-import {ApiResponseSeries, Serie} from "../../common/interface";
-import {InfiniteScrollCustomEvent, IonicModule} from "@ionic/angular";
+import { Serie} from "../../common/interface";
+import {InfiniteScrollCustomEvent} from "@ionic/angular";
 import {CabeceraPage} from "../cabecera/cabecera.page";
 import {RouterLink} from "@angular/router";
 

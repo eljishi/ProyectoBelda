@@ -13,9 +13,6 @@ import {
 import {Serie} from "../../common/interface";
 import {SeriesService} from "../../service/series.service";
 import {CabeceraPage} from "../cabecera/cabecera.page";
-import {addIcons} from "ionicons";
-import {add, logoFacebook, logoInstagram, logoTwitter, logoYoutube} from "ionicons/icons";
-
 @Component({
   selector: 'app-busqueda',
   templateUrl: './busqueda.page.html',

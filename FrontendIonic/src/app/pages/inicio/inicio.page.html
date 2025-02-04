@@ -2,7 +2,7 @@
 <ion-content>
   @for (serie of miArrayInf;track $index){
 
-   <ion-card style="border-radius: 5%" [routerLink]="'/detalles/' + serie.id">
+   <ion-card style="border-radius: 5%" [routerLink]="'/detalles/' + serie._id">
      <ion-card-content>
        <ion-img [src]="serie.imagenes[0]"></ion-img>
      </ion-card-content>

@@ -28,7 +28,6 @@ export class CategoriasPage implements OnInit {
 
   private readonly seriesService:SeriesService=inject(SeriesService)
   series:Serie[]=[];
-  serieBuscada: Serie[]=[];
   categorias: string[] = [];
 
   constructor() { }
