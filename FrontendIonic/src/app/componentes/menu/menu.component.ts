@@ -1,7 +1,8 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, Input, OnInit} from '@angular/core';
 import {IonicModule} from "@ionic/angular";
 import {Serie} from "../../common/interface";
 import {SeriesService} from "../../service/series.service";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-menu',
@@ -9,10 +10,12 @@ import {SeriesService} from "../../service/series.service";
   styleUrls: ['./menu.component.scss'],
   standalone: true,
   imports: [
-    IonicModule
+    IonicModule,
+    RouterLink
   ]
 })
 export class MenuComponent  implements OnInit {
+
 
   private readonly seriesService:SeriesService=inject(SeriesService)
   series:Serie[]=[];
@@ -43,5 +46,7 @@ export class MenuComponent  implements OnInit {
       }
     });
   }
+
+
 
 }

@@ -2,7 +2,7 @@
   {
     "id": "1",
     "titulo": "One Piece",
-    "categorias": ["Acción", "Aventura", "Comedia","Superpoderes","Shounen"],
+    "categorias": ["Accion", "Aventura", "Comedia","Superpoderes","Shounen"],
     "imagenes": [
       "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/a249096c7812deb8c3c2c907173f3774.jpg",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZu3B8osHlu8F-KYSmPLgkdR2uQDCRcqXsAg&s",
@@ -58,7 +58,7 @@
   {
     "id": "5",
     "titulo": "Black Clover",
-    "categorias": ["Acción", "Aventura", "Fantasía", "Magia"],
+    "categorias": ["Accion", "Aventura", "Fantasía", "Magia"],
     "imagenes": [
       "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/0273e80242d80b0218f640e038269c18.jpg",
       "https://i.redd.it/a74bro3ymj1d1.jpeg",
@@ -86,7 +86,7 @@
   {
     "id": "7",
     "titulo": "Dragon Ball Super",
-    "categorias": ["Acción", "Aventura", "Comedia"],
+    "categorias": ["Accion", "Aventura", "Comedia"],
     "imagenes": [
       "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/26079ab060401d8a76039e985d63a3e9.jpg",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYbDcg1DGbLu9J3SJIsAyOwhLbori3cpP4YQ&s",

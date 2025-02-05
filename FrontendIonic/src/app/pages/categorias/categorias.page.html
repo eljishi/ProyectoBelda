@@ -1,5 +1,4 @@
 <app-cabecera></app-cabecera>
-
 <ion-content>
   <div>
     <ion-col>
@@ -10,18 +9,33 @@
           class="grid-container">
           @for (cat of categorias;track $index){
             <swiper-slide class="grid-item">
-              <ion-chip>{{cat}}</ion-chip>
+              <ion-chip
+                [color]="categoriaSeleccionada === cat ? 'primary' : 'default'"
+                (click)="filterByCategory(cat)">
+                {{cat}}
+              </ion-chip>
             </swiper-slide>
           }
         </swiper-container>
       </ion-row>
     </ion-col>
   </div>
+
+  <div class="series-container">
+    @for (serie of seriesFiltradas;track serie.id){
+      <ion-card style="border-radius: 10px">
+        <ion-card-header>
+          <ion-img [src]="serie.imagenes[0]"></ion-img>
+          <ion-card-title>{{serie.titulo}}</ion-card-title>
+        </ion-card-header>
+
+      </ion-card>
+    }
+  </div>
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="./pages/busqueda/busqueda.page" color="tertiary">
       <ion-icon name="search-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-
 </ion-content>

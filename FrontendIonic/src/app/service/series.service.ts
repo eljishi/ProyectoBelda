@@ -2,11 +2,9 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {
-  ApiResponseMessage,
   ApiResponseSerie,
   ApiResponseSerieCategorias,
   ApiResponseSeries,
-  Serie
 } from "../common/interface";
 import {environment} from "../../environments/environment";
 
@@ -25,6 +23,7 @@ export class SeriesService {
   getSerie(id:string):Observable<ApiResponseSerie>{
     return this.httpClient.get<ApiResponseSerie>(environment.urlBase+"serie/"+id)
   }
+
 
 
   constructor() { }

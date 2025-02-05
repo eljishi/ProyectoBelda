@@ -18,7 +18,7 @@ import {CabeceraPage} from "../cabecera/cabecera.page";
   templateUrl: './busqueda.page.html',
   styleUrls: ['./busqueda.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonSearchbar, IonCard, IonCardContent, IonCardSubtitle, IonCardTitle, IonChip, IonImg, IonText, CabeceraPage],
+  imports: [IonContent, CommonModule, FormsModule, IonSearchbar, IonCard, IonCardContent, IonCardSubtitle, IonCardTitle, IonChip, IonImg, IonText, CabeceraPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class BusquedaPage implements OnInit {
