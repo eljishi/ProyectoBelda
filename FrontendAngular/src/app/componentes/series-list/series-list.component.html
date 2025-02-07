@@ -38,6 +38,11 @@
         <div class="card-body">
           <h5 class="card-title">{{serie.titulo}}</h5>
           <p class="card-text">{{serie.sinopsis}}</p>
+          <div>
+            <p><b>Capitulos: </b>{{serie.capitulos}} </p>
+            <p><b>Fecha de emision: </b>{{serie.emision}}</p>
+          </div>
+
 
           @for (categoria of serie.categorias;track $index){
             <mat-chip style="padding-bottom: 5px">{{categoria}}</mat-chip>

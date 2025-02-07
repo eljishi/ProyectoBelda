@@ -79,7 +79,7 @@ export class SeriesListComponent {
       this.serieService.deleteSerie(serie._id).subscribe({
         next: value => {
           console.log(value);
-          this.loadSeries(); // Recargar la lista después de eliminar
+          this.loadSeries();
         },
         error: err => {
           console.error(err.message);

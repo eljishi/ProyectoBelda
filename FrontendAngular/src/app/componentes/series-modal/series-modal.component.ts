@@ -22,8 +22,8 @@ import { RouterLink } from "@angular/router";
 })
 export class SeriesModalComponent implements OnInit {
   @Input() serie!: Serie;
-  @Input({ required: true }) editar: boolean = false;
-  @Input({ required: true }) categorias: string[] = [];
+  @Input({required: true}) editar: boolean = false;
+  @Input({required: true}) categorias: string[] = [];
 
   activeModal: NgbActiveModal = inject(NgbActiveModal);
   private readonly seriesService: SerieService = inject(SerieService);
@@ -50,11 +50,25 @@ export class SeriesModalComponent implements OnInit {
     });
   }
 
-  get titulo() { return this.formSeries.get('titulo'); }
-  get capitulos() { return this.formSeries.get('capitulos'); }
-  get emision() { return this.formSeries.get('emision'); }
-  get sinopsis() { return this.formSeries.get('sinopsis'); }
-  get nuevaCategoria() { return this.anadirCategoria.get('nuevaCategoria'); }
+  get titulo() {
+    return this.formSeries.get('titulo');
+  }
+
+  get capitulos() {
+    return this.formSeries.get('capitulos');
+  }
+
+  get emision() {
+    return this.formSeries.get('emision');
+  }
+
+  get sinopsis() {
+    return this.formSeries.get('sinopsis');
+  }
+
+  get nuevaCategoria() {
+    return this.anadirCategoria.get('nuevaCategoria');
+  }
 
   ngOnInit() {
     if (this.editar && this.serie) {
@@ -76,13 +90,13 @@ export class SeriesModalComponent implements OnInit {
   agregarImagen(url: string) {
     if (url && url.trim()) {
       this.imagenesList = [...this.imagenesList, url.trim()];
-      this.formSeries.patchValue({ imagenes: this.imagenesList });
+      this.formSeries.patchValue({imagenes: this.imagenesList});
     }
   }
 
   eliminarImagen(index: number) {
     this.imagenesList = this.imagenesList.filter((_, i) => i !== index);
-    this.formSeries.patchValue({ imagenes: this.imagenesList });
+    this.formSeries.patchValue({imagenes: this.imagenesList});
   }
 
   anadirNuevaCategoria() {
@@ -90,7 +104,7 @@ export class SeriesModalComponent implements OnInit {
       const nuevaCat = this.nuevaCategoria.value.trim();
       if (nuevaCat && !this.listaCategorias.includes(nuevaCat)) {
         this.listaCategorias = [...this.listaCategorias, nuevaCat];
-        this.formSeries.patchValue({ categorias: this.listaCategorias });
+        this.formSeries.patchValue({categorias: this.listaCategorias});
         this.anadirCategoria.reset();
 
         if (this.editar) {
@@ -102,7 +116,7 @@ export class SeriesModalComponent implements OnInit {
 
   eliminarCategoria(categoria: string) {
     this.listaCategorias = this.listaCategorias.filter(cat => cat !== categoria);
-    this.formSeries.patchValue({ categorias: this.listaCategorias });
+    this.formSeries.patchValue({categorias: this.listaCategorias});
 
     if (this.editar) {
       this.guardarCambios();
@@ -110,10 +124,11 @@ export class SeriesModalComponent implements OnInit {
   }
 
   private guardarCambios() {
-    if (this.formSeries.valid) {
+    if (this.formSeries.valid && this.serie?._id) {
       const formValue = {...this.formSeries.getRawValue()};
       formValue.categorias = this.listaCategorias;
       formValue.imagenes = this.imagenesList;
+      formValue._id = this.serie._id;
 
       this.seriesService.updateSerie(formValue).subscribe({
         next: value => {
@@ -133,6 +148,7 @@ export class SeriesModalComponent implements OnInit {
       formValue.imagenes = this.imagenesList;
 
       if (this.editar) {
+        formValue._id = this.serie._id;
         this.seriesService.updateSerie(formValue).subscribe({
           next: value => {
             console.log('Serie actualizada:', value);
@@ -143,7 +159,7 @@ export class SeriesModalComponent implements OnInit {
           },
         });
       } else {
-        const { _id, ...serieData } = formValue;
+        const {_id, ...serieData} = formValue;
         this.seriesService.addSerie(serieData).subscribe({
           next: value => {
             console.log('Serie añadida:', value);
