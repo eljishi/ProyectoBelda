@@ -169,6 +169,23 @@ export class SeriesController {
         }
     }
 
+    @Get('categoria/:categoria')
+    async getSeriesByCategory(@Param('categoria') categoria: string) {
+        try {
+            const data = await this.serieService.getSeriesByCategory(categoria);
+            return {
+                status: 'Ok',
+                data
+            };
+        } catch (e: any) {
+            throw new InternalServerErrorException({
+                status: 'Error',
+                message: e.message
+            });
+        }
+    }
+
+
 
 }
 

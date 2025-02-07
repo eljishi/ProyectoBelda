@@ -14,6 +14,10 @@ export interface ApiResponseMessage {
   status: string,
   message: string
 }
+export interface ApiResponseSerieCategoria {
+  status: string
+  categoria: string
+}
 
 export interface Serie {
   _id: string

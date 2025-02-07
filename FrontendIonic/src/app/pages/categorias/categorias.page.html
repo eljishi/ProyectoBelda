@@ -11,7 +11,7 @@
             <swiper-slide class="grid-item">
               <ion-chip
                 [color]="categoriaSeleccionada === cat ? 'primary' : 'default'"
-                (click)="filterByCategory(cat)">
+                (click)="filtrarPorCategoria(cat)">
                 {{cat}}
               </ion-chip>
             </swiper-slide>
@@ -22,7 +22,7 @@
   </div>
 
   <div class="series-container">
-    @for (serie of seriesFiltradas;track serie.id){
+    @for (serie of seriesFiltradaInf;track serie.id){
       <ion-card style="border-radius: 10px">
         <ion-card-header>
           <ion-img [src]="serie.imagenes[0]"></ion-img>
@@ -38,4 +38,12 @@
       <ion-icon name="search-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+
+<ion-infinite-scroll (ionInfinite)="loadMore($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Cargando más series...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
 </ion-content>

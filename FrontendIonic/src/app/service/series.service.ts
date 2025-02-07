@@ -23,8 +23,12 @@ export class SeriesService {
   getSerie(id:string):Observable<ApiResponseSerie>{
     return this.httpClient.get<ApiResponseSerie>(environment.urlBase+"serie/"+id)
   }
-
-
+  searchSeries(query: string): Observable<ApiResponseSeries> {
+    return this.httpClient.get<ApiResponseSeries>(`${environment.urlBase}search?query=${query}`);
+  }
+  getSerieCategoria(categoria: string): Observable<ApiResponseSeries> {
+    return this.httpClient.get<ApiResponseSeries>(`${environment.urlBase}categoria/${categoria}`);
+  }
 
   constructor() { }
 }

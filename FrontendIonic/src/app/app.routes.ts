@@ -33,10 +33,7 @@ export const routes: Routes = [
     path: 'detalles/:_id',
     loadComponent: () => import('./pages/detalles/detalles.page').then( m => m.DetallesPage)
   },
-  {
-    path: 'categorias-menu',
-    loadComponent: () => import('./pages/categorias-menu/categorias-menu.page').then( m => m.CategoriasMenuPage)
-  },
+
 
 
 

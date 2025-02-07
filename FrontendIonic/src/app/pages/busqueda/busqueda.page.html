@@ -2,23 +2,19 @@
 
 <ion-content>
   <div>
-  <ion-searchbar
-    class="ion-searchbar"
-    style="border-width: 100px"
-    placeholder="Busca una serie"
-    (ionInput)="onSearch($event)">
-  </ion-searchbar>
+    <ion-searchbar
+      class="ion-searchbar"
+      style="border-width: 100px"
+      placeholder="Busca una serie"
+      (ionInput)="buscarSerie($event)">
+    </ion-searchbar>
   </div>
 
   @if (serieBuscada.length<1){
-      <p class="ion-align-items-center">No hay series cargadas</p>
-
-
+    <p class="ion-align-items-center">No hay series cargadas</p>
   } @else{
     @for (serie of serieBuscada;track $index){
-
       <ion-card style="border-radius: 5%">
-
         <ion-card-content>
           <swiper-container pagination="true">
             @for (imagen of serie.imagenes; track $index) {
@@ -47,12 +43,7 @@
           <ion-text>Capitulos: {{serie.capitulos}}</ion-text>
           <ion-text style="padding-left: 20px">Fecha emision: {{serie.emision}}</ion-text>
         </ion-card-content>
-
       </ion-card>
     }
   }
-
 </ion-content>
-
-
-

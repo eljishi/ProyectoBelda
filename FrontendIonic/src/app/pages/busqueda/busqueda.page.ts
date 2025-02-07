@@ -3,56 +3,67 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
   IonCard,
-  IonCardContent, IonCardSubtitle, IonCardTitle, IonChip,
+  IonCardContent,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonChip,
   IonContent,
-  IonHeader, IonImg,
-  IonSearchbar, IonText,
+  IonHeader,
+  IonImg,
+  IonSearchbar,
+  IonText,
   IonTitle,
   IonToolbar
 } from '@ionic/angular/standalone';
 import {Serie} from "../../common/interface";
 import {SeriesService} from "../../service/series.service";
 import {CabeceraPage} from "../cabecera/cabecera.page";
+
 @Component({
   selector: 'app-busqueda',
   templateUrl: './busqueda.page.html',
   styleUrls: ['./busqueda.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule, IonSearchbar, IonCard, IonCardContent, IonCardSubtitle, IonCardTitle, IonChip, IonImg, IonText, CabeceraPage],
+  imports: [
+    IonContent,
+    CommonModule,
+    FormsModule,
+    IonSearchbar,
+    IonCard,
+    IonCardContent,
+    IonCardSubtitle,
+    IonCardTitle,
+    IonChip,
+    IonImg,
+    IonText,
+    CabeceraPage
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class BusquedaPage implements OnInit {
   private readonly seriesService:SeriesService=inject(SeriesService)
-  series:Serie[]=[];
   serieBuscada: Serie[]=[];
 
-  constructor() {
-      }
+  constructor() { }
 
   ngOnInit() {
-    this.loadSeries();
+    this.realizarBusqueda('');
   }
 
-  private loadSeries() {
-    this.seriesService.getSeries().subscribe({
-        next: value => {
-          this.series = value.data;
-        }
-      }
-    )
-  }
-
-  onSearch(event: CustomEvent) {
+  buscarSerie(event: CustomEvent) {
     const searchTerm = event.detail.value?.toLowerCase() || '';
-
-    if (!searchTerm) {
-      this.serieBuscada = [];
-      return;
-    }
-    this.serieBuscada = this.series.filter(serie =>
-      serie.titulo.toLowerCase().includes(searchTerm)
-    );
+    this.realizarBusqueda(searchTerm);
   }
 
-
+  private realizarBusqueda(termino: string) {
+    this.seriesService.searchSeries(termino).subscribe({
+      next: (response) => {
+        this.serieBuscada = response.data;
+      },
+      error: (error) => {
+        console.error('Error buscando series:', error);
+        this.serieBuscada = [];
+      }
+    });
+  }
 }

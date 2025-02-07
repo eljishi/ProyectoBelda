@@ -46,12 +46,18 @@ export class SerieService {
         return this.serieModel.find().distinct('categorias')
     }
 
-    getSerieByTitleOrSynopsis(searchTerm: string): Promise<any[]> {
+    getSerieByTitleOrSynopsis(searchTerm: string): Promise<Serie[]> {
         return this.serieModel.find({
             $or: [
                 { titulo: { $regex: searchTerm, $options: 'i' } },
                 { sinopsis: { $regex: searchTerm, $options: 'i' } }
             ]
+        }).exec();
+    }
+
+    async getSeriesByCategory(categoria: string): Promise<Serie[]> {
+        return this.serieModel.find({
+            categorias: categoria
         }).exec();
     }
 
