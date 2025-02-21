@@ -6,7 +6,6 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angula
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { CommonModule } from '@angular/common';
-import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-series-modal',
@@ -38,7 +37,7 @@ export class SeriesModalComponent implements OnInit {
   constructor() {
     this.formSeries = this.formBuilder.group({
       titulo: ['', Validators.required],
-      categorias: [[]],
+      categorias: [[], [Validators.required, Validators.minLength(1)]],
       imagenes: [[]],
       capitulos: ['', [Validators.required, Validators.min(1)]],
       emision: ['', Validators.required],
@@ -99,10 +98,21 @@ export class SeriesModalComponent implements OnInit {
     this.formSeries.patchValue({imagenes: this.imagenesList});
   }
 
+  protected seleccionarCategoria(categoria: string) {
+    if (!this.listaCategorias.includes(categoria)) {
+      this.listaCategorias = [...this.listaCategorias, categoria];
+      this.formSeries.patchValue({categorias: this.listaCategorias});
+
+      if (this.editar) {
+        this.guardarCambios();
+      }
+    }
+  }
+
   anadirNuevaCategoria() {
     if (this.nuevaCategoria?.valid && this.nuevaCategoria.value) {
       const nuevaCat = this.nuevaCategoria.value.trim();
-      if (nuevaCat && !this.listaCategorias.includes(nuevaCat)) {
+      if (nuevaCat && !this.listaCategorias.includes(nuevaCat) && !this.categorias.includes(nuevaCat)) {
         this.listaCategorias = [...this.listaCategorias, nuevaCat];
         this.formSeries.patchValue({categorias: this.listaCategorias});
         this.anadirCategoria.reset();
@@ -114,6 +124,8 @@ export class SeriesModalComponent implements OnInit {
     }
   }
 
+
+
   eliminarCategoria(categoria: string) {
     this.listaCategorias = this.listaCategorias.filter(cat => cat !== categoria);
     this.formSeries.patchValue({categorias: this.listaCategorias});
@@ -124,7 +136,7 @@ export class SeriesModalComponent implements OnInit {
   }
 
   private guardarCambios() {
-    if (this.formSeries.valid && this.serie?._id) {
+    if (this.formSeries.valid && this.serie?._id && this.listaCategorias.length > 0) {
       const formValue = {...this.formSeries.getRawValue()};
       formValue.categorias = this.listaCategorias;
       formValue.imagenes = this.imagenesList;
@@ -142,7 +154,7 @@ export class SeriesModalComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.formSeries.valid) {
+    if (this.formSeries.valid && this.listaCategorias.length > 0) {
       const formValue = {...this.formSeries.getRawValue()};
       formValue.categorias = this.listaCategorias;
       formValue.imagenes = this.imagenesList;

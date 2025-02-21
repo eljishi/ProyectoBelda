@@ -103,17 +103,42 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-md-8">
-            <div class="mt-2">
-              @for (categoria of listaCategorias; track $index) {
-                <span class="badge bg-primary me-2 mb-2" style="cursor: pointer" (click)="eliminarCategoria(categoria)">
+
+        <div class="row mb-3">
+          <div class="col-12">
+            <label class="form-label">Categorías disponibles</label>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              @for (categoria of categorias; track categoria) {
+                @if (!listaCategorias.includes(categoria)) {
+                  <span class="badge bg-secondary me-2 mb-2" role="button"
+                        (click)="seleccionarCategoria(categoria)">
+                    {{ categoria }} +
+                  </span>
+                }
+              }
+            </div>
+
+
+            <label class="form-label">Categorías seleccionadas</label>
+            <div class="d-flex flex-wrap gap-2">
+              @for (categoria of listaCategorias; track categoria) {
+                <span class="badge bg-primary me-2 mb-2" role="button"
+                      (click)="eliminarCategoria(categoria)">
                   {{ categoria }} ×
                 </span>
               }
+              @if (listaCategorias.length === 0) {
+                <div class="text-danger">
+                  Debe añadir al menos una categoría
+                </div>
+              }
             </div>
           </div>
-          <div class="col-md-4">
+        </div>
+
+
+        <div class="row">
+          <div class="col-12">
             <form [formGroup]="anadirCategoria" class="d-flex">
               <div class="form-floating flex-grow-1 me-2">
                 <input style="width: auto" type="text" class="form-control"
@@ -133,13 +158,15 @@
         </div>
       </form>
     </div>
+
+
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cerrar</button>
       <button
         type="button"
         class="btn btn-primary"
         (click)="onSubmit()"
-        [disabled]="formSeries.invalid">
+        [disabled]="formSeries.invalid || listaCategorias.length === 0">
         Guardar
       </button>
     </div>
